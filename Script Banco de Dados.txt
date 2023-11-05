@@ -62,7 +62,6 @@ insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salá
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'consultoria', 4000.00, '2023-11-10');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salário', 9000.00, '2023-12-01');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'aulas', 5000.00, '2023-12-21');
-
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salário', 9000.00, '2022-06-01');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'consultoria', 6000.00, '2022-06-10');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'aulas', 5000.00, '2022-06-21');
@@ -91,7 +90,6 @@ insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento)
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Aluguel', 2500.00, '2023-12-10', '2023-12-10');
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Escola', 1500.00, '2023-12-12', null);
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Comida', 5000.00, '2023-12-12', null);
-
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Aluguel', 2500.00, '2022-12-10', '2022-12-10');
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Escola', 1500.00, '2022-12-12', null);
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Comida', 5000.00, '2022-12-12', null);
