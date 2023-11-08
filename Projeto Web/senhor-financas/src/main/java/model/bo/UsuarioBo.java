@@ -10,6 +10,7 @@ public class UsuarioBo {
 		return usuarioDao.realizarLoginDao(usuarioVo);
 	}
 	
+	//Create
 	public UsuarioVo cadastrarUsuarioBo (UsuarioVo usuarioVo) {
 		UsuarioDao usuarioDao = new UsuarioDao();
 		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
@@ -20,6 +21,13 @@ public class UsuarioBo {
 		return usuarioVo;
 	}
 	
+	//Read
+	
+	
+	//Read
+	
+	
+	//Update
 	public boolean atualizarUsuarioBo (UsuarioVo usuarioVo) {
 		boolean resultado = false;
 		UsuarioDao usuarioDao = new UsuarioDao();
@@ -31,17 +39,16 @@ public class UsuarioBo {
 		return resultado;
 	}
 	
-	
+	//Delete
 	public boolean excluirUsuarioBo(UsuarioVo usuarioVo) {
 		boolean resultado = false;
 		UsuarioDao usuarioDao = new UsuarioDao();
-		if(usuarioDao.verificarCadastroPorCpfDao(usuarioVo)))) {
-			System.out.println("Usuario se encontra desligado do banco de dados");
-		}else {
+		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
 			resultado = usuarioDao.excluirUsuarioDao(usuarioVo);
+		}else {
+			System.out.println("Usuario não existe na base de dados");
 		}
-	}else {
-		System.out.println("usuario nao existe no banco de dados");
+		return resultado;
+
 	}
-	
 }

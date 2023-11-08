@@ -25,6 +25,17 @@ public class UsuarioDao {
 		return null;
 	}
 
+	public boolean atualizarUsuarioDao(UsuarioVo usuarioVo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	public boolean excluirUsuarioDao(UsuarioVo usuarioVo) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+
 	
 	
 }
