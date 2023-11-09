@@ -1,5 +1,7 @@
 package model.bo;
 
+import java.util.ArrayList;
+
 import model.dao.UsuarioDao;
 import model.vo.UsuarioVo;
 
@@ -21,11 +23,25 @@ public class UsuarioBo {
 		return usuarioVo;
 	}
 	
-	//Read
+	//Read all
+	public ArrayList<UsuarioVo> consultarTodosUsuariosBo () {
+		UsuarioDao usuarioDao = new UsuarioDao();
+		ArrayList<UsuarioVo> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDao();
+		if(listaUsuariosVo.isEmpty()) {
+			System.out.println("Lista de Usuários está vazia!");
+		}
+		return listaUsuariosVo;
+	}
 	
-	
-	//Read
-	
+	//Read one
+	public UsuarioVo consultarUsuarioBo (UsuarioVo usuarioVo) {
+		UsuarioDao usuarioDao = new UsuarioDao();
+		UsuarioVo usuario = usuarioDao.consultarUsuarioDao(usuarioVo);
+		if(usuario == null) {
+			System.out.println("\nUsuário não localizado!");
+		}
+		return usuario;
+	}
 	
 	//Update
 	public boolean atualizarUsuarioBo (UsuarioVo usuarioVo) {

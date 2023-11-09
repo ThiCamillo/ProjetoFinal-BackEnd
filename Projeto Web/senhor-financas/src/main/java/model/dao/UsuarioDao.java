@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 import model.vo.UsuarioVo;
 
@@ -34,6 +35,17 @@ public class UsuarioDao {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	public UsuarioVo consultarUsuarioDao(UsuarioVo usuarioVo) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public ArrayList<UsuarioVo> consultarTodosUsuariosDao() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 
 	
