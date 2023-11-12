@@ -145,7 +145,7 @@ public class UsuarioDao {
 		try {
 			resultado = stmt.executeQuery(query);
 			while(resultado.next()) {
-				UsuarioVo usuario = new UsuarioVo;
+				UsuarioVo usuario = new UsuarioVo();
 				usuario.setIdUsuario(Integer.parseInt(resultado.getString(1)));
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
