@@ -93,7 +93,7 @@ public class UsuarioVo {
 		+ "\nNome: " + this.getNome() 
 		+ "\nCPF: " + this.getCpf() 
 		+ "\nEmail: " + this.getEmail()
-		+ "\n Data Nascimento: " + this.getDataNascimento();
+		+ "\nData Nascimento: " + this.getDataNascimento();
 		//+ "\nLogin: " + this.getLogin()
 		//+ "\nSenha: " + this.getSenha();
 	}

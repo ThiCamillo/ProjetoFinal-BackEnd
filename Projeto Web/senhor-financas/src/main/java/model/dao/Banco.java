@@ -16,48 +16,48 @@ import javax.sql.DataSource;
 
 public class Banco {
 	
-//	private static final String DRIVER = "com.mysql.cj.jdbc.Driver"; // MYSQL versão 8
-//	// private static final String DRIVER = "com.mysql.jdbc.Driver"; //MYSQL versão
-//	// 5
-//	private static final String BANCODADOS = "dbteste";
-//	private static final String CONEXAO = "jdbc:mysql://localhost:3306/" + BANCODADOS
-//			+ "?useTimezone=true&serverTimezone=UTC";
-//	private static final String USER = "root";
-//	private static final String PASSWORD = "admin";
-//
-//	public static Connection getConnection() {
-//		try {
-//			Connection conn = null;
-//			Class.forName(DRIVER);
-//			conn = DriverManager.getConnection(CONEXAO, USER, PASSWORD);
-//			return conn;
-//		} catch (ClassNotFoundException e) {
-//			System.out.println("Classe do Driver não foi encontrada.");
-//			System.out.println("Erro: " + e.getMessage());
-//			return null;
-//		} catch (SQLException e) {
-//			System.out.println("Erro ao obter a Connection.");
-//			System.out.println("Erro: " + e.getMessage());
-//			return null;
-//		}
-//	}
-	
-	
-	private static final String NAME_DATASOURCE = "SenacDS";
-	
-	public static Connection getConnection(){
+	private static final String DRIVER = "com.mysql.cj.jdbc.Driver"; // MYSQL versão 8
+	// private static final String DRIVER = "com.mysql.jdbc.Driver"; //MYSQL versão
+	// 5
+	private static final String BANCODADOS = "dbteste";
+	private static final String CONEXAO = "jdbc:mysql://localhost:3306/" + BANCODADOS
+			+ "?useTimezone=true&serverTimezone=UTC";
+	private static final String USER = "root";
+	private static final String PASSWORD = "admin";
+
+	public static Connection getConnection() {
 		try {
-			Context initContext = new InitialContext();
-			Context envContext = (Context) initContext.lookup("java:/comp/env");
-			DataSource ds = (DataSource) envContext.lookup(NAME_DATASOURCE);
-			Connection conn = ds.getConnection();
-			return conn; 
-		} catch (Exception e) {
+			Connection conn = null;
+			Class.forName(DRIVER);
+			conn = DriverManager.getConnection(CONEXAO, USER, PASSWORD);
+			return conn;
+		} catch (ClassNotFoundException e) {
+			System.out.println("Classe do Driver não foi encontrada.");
+			System.out.println("Erro: " + e.getMessage());
+			return null;
+		} catch (SQLException e) {
 			System.out.println("Erro ao obter a Connection.");
 			System.out.println("Erro: " + e.getMessage());
 			return null;
 		}
 	}
+	
+	
+//	private static final String NAME_DATASOURCE = "SenacDS";
+//	
+//	public static Connection getConnection(){
+//		try {
+//			Context initContext = new InitialContext();
+//			Context envContext = (Context) initContext.lookup("java:/comp/env");
+//			DataSource ds = (DataSource) envContext.lookup(NAME_DATASOURCE);
+//			Connection conn = ds.getConnection();
+//			return conn; 
+//		} catch (Exception e) {
+//			System.out.println("Erro ao obter a Connection.");
+//			System.out.println("Erro: " + e.getMessage());
+//			return null;
+//		}
+//	}
 
 	
 	//private static final String Driver = "com.mysql.cj.jdbc.Driver";
