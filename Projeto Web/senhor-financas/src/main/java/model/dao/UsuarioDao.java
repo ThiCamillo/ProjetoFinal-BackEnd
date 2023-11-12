@@ -6,8 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+
+import javax.swing.text.DateFormatter;
+
 import model.vo.UsuarioVo;
 
 public class UsuarioDao {
@@ -27,8 +31,7 @@ public class UsuarioDao {
 				usuarioVo.setNome(resultado.getString(2));
 				usuarioVo.setCpf(resultado.getString(3));
 				usuarioVo.setEmail(resultado.getString(4));
-				usuarioVo.setDataNascimento(
-						LocalDate.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+				usuarioVo.setDataNascimento(LocalDateTime.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 			}
 		} catch (SQLException erro) {
 			System.out.println("Erro ao executar a query no método realizarLoginDAO!");
@@ -147,8 +150,7 @@ public class UsuarioDao {
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
 				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(
-						LocalDate.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+				usuario.setDataNascimento(LocalDateTime.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 				listaUsuarios.add(usuario);
 			}
 		} catch (SQLException erro) {
@@ -177,8 +179,7 @@ public class UsuarioDao {
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
 				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(
-						LocalDate.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+				usuario.setDataNascimento(LocalDateTime.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarUsuarioDao!");

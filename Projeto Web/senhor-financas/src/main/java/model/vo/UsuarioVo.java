@@ -11,11 +11,11 @@ public class UsuarioVo {
 	private String nome;
 	private String cpf;
 	private String email;
-	LocalDate dataNascimento;
+	private LocalDateTime dataNascimento;
 	private String login;
 	private String senha;
 	
-	public UsuarioVo(int idUsuario, String nome, String cpf, String email, LocalDate dataNascimento, String login,
+	public UsuarioVo(int idUsuario, String nome, String cpf, String email, LocalDateTime dataNascimento, String login,
 			String senha) {
 		super();
 		this.idUsuario = idUsuario;
@@ -63,11 +63,11 @@ public class UsuarioVo {
 		this.email = email;
 	}
 
-	public LocalDate getDataNascimento() {
+	public LocalDateTime getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDate dataNascimento) {
+	public void setDataNascimento(LocalDateTime dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -93,17 +93,17 @@ public class UsuarioVo {
 		+ "\nNome: " + this.getNome() 
 		+ "\nCPF: " + this.getCpf() 
 		+ "\nEmail: " + this.getEmail()
-		+ "\n Data Nascimento: " + this.getDataNascimento()
-		+ "\nLogin: " + this.getLogin()
-		+ "\nSenha: " + this.getSenha();
+		+ "\n Data Nascimento: " + this.getDataNascimento();
+		//+ "\nLogin: " + this.getLogin()
+		//+ "\nSenha: " + this.getSenha();
 	}
 	
-//	private String validarData(LocalDateTime data) {
-//		String resultado = "";
-//		if(data != null) {
-//			resultado = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-//		}
-//		return resultado;
-//	}
-//	
+	private String validarData(LocalDateTime data) {
+		String resultado = "";
+		if(data != null) {
+			resultado = data.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+		}
+		return resultado;
+	}
+	
 }
