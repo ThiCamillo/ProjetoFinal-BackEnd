@@ -88,10 +88,31 @@ public class UsuarioDao {
 		}
 		return usuarioVo;
 	}
-
+	
+	//UPDATE
 	public boolean atualizarUsuarioDao(UsuarioVo usuarioVo) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		boolean retorno = false;
+		String query = "UPDATE usuario SET nome = '" + usuarioVo.getNome()
+				+ "', cpf = '" + usuarioVo.getCpf()
+				+ "', email = '" + usuarioVo.getEmail()
+				+ "', datanascimento = '" + usuarioVo.getDataNascimento()
+				+ "', login = '" + usuarioVo.getLogin()
+				+ "', senha = '" + usuarioVo.getSenha()
+				+ "WHERE idusuario = " + usuarioVo.getIdUsuario();
+		try {
+			if(stmt.executeUpdate(query) == 1) {
+				retorno = true;
+			}
+		} catch (SQLException erro) {
+			System.out.println("\nErro ao executar a query do metodo atualizarUsuarioDao!");
+			System.out.println("Erro: " + erro.getMessage());
+		} finally {
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return retorno;
 	}
 
 	public boolean excluirUsuarioDao(UsuarioVo usuarioVo) {
