@@ -3,6 +3,7 @@ package model.vo;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class UsuarioVo {
 
@@ -97,12 +98,12 @@ public class UsuarioVo {
 		+ "\nSenha: " + this.getSenha();
 	}
 	
-	private String validarData(LocalDateTime data) {
-		String resultado = "";
-		if(data != null) {
-			resultado = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
-		}
-		return resultado;
-	}
-	
+//	private String validarData(LocalDateTime data) {
+//		String resultado = "";
+//		if(data != null) {
+//			resultado = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss"));
+//		}
+//		return resultado;
+//	}
+//	
 }

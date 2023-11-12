@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
 import model.vo.UsuarioVo;
 
 public class UsuarioDao {
@@ -18,9 +17,8 @@ public class UsuarioDao {
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 
-		String query = "SELECT u.idusuario, u.nome, u.cpf, u.email, "
-				+ "u.datanascimento" + "FROM USUARIO u"
-				+ " WHERE u.login like '" + usuarioVo.getLogin() + "'" + " AND u.senha like '" + usuarioVo.getSenha() +"'";
+		String query = "SELECT idusuario, nome, cpf, email, " + "datanascimento" + "FROM usuario"
+				+ " WHERE login like '" + usuarioVo.getLogin() + "'" + " AND senha like '" + usuarioVo.getSenha() + "'";
 
 		try {
 			resultado = stmt.executeQuery(query);
@@ -29,8 +27,8 @@ public class UsuarioDao {
 				usuarioVo.setNome(resultado.getString(2));
 				usuarioVo.setCpf(resultado.getString(3));
 				usuarioVo.setEmail(resultado.getString(4));
-				usuarioVo.setDataNascimento(LocalDate.parse(resultado.getString(5),
-						DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+				usuarioVo.setDataNascimento(
+						LocalDate.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
 			}
 		} catch (SQLException erro) {
 			System.out.println("Erro ao executar a query no método realizarLoginDAO!");
@@ -41,8 +39,8 @@ public class UsuarioDao {
 		}
 		return usuarioVo;
 	}
-	
-	//INSERT
+
+	// INSERT
 	public boolean verificarCadastroUsuarioBaseDadosDao(UsuarioVo usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
@@ -51,10 +49,10 @@ public class UsuarioDao {
 		String query = "SELECT cpf FROM usuario WHERE cpf = ' " + usuarioVo.getCpf() + " ' ";
 		try {
 			resultado = stmt.executeQuery(query);
-			if(resultado.next()) {
+			if (resultado.next()) {
 				retorno = true;
 			}
-		}catch (SQLException erro){
+		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo verificarCadastroUsuarioBaseDadosDao!");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
@@ -69,7 +67,25 @@ public class UsuarioDao {
 		String query = "INSERT INTO usuario (nome, cpf, email, datanascimento, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
-		
+		try {
+			pstmt.setString(1, usuarioVo.getNome());
+			pstmt.setString(2, usuarioVo.getCpf());
+			pstmt.setString(3, usuarioVo.getEmail());
+			pstmt.setObject(4, usuarioVo.getDataNascimento());
+			pstmt.setString(5, usuarioVo.getLogin());
+			pstmt.setString(6, usuarioVo.getSenha());
+			pstmt.execute();
+			ResultSet resultado = pstmt.getGeneratedKeys();
+			if(resultado.next()) {
+				usuarioVo.setIdUsuario(resultado.getInt(1));
+		}
+		} catch (SQLException erro) {
+			System.out.println("\nErro ao executar a query do metodo cadastrarUsuarioDao!");
+			System.out.println("Erro: " + erro.getMessage());
+		} finally {
+			Banco.closeStatement(pstmt);
+			Banco.closeConnection(conn);
+		}
 		return usuarioVo;
 	}
 
@@ -93,8 +109,4 @@ public class UsuarioDao {
 		return null;
 	}
 
-
-
-	
-	
 }
