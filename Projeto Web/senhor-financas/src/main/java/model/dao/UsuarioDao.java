@@ -115,17 +115,58 @@ public class UsuarioDao {
 		return retorno;
 	}
 
+	//DELETE
 	public boolean excluirUsuarioDao(UsuarioVo usuarioVo) {
-		// TODO Auto-generated method stub
-		return false;
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		boolean retorno = false;
+		String query = "DELETE FROM usuario WHERE idusuario = " + usuarioVo.getIdUsuario();
+		try {
+			if(stmt.executeUpdate(query) == 1) {
+				retorno = true;
+			}
+		} catch (SQLException erro) {
+			System.out.println("\nErro ao executar a query do metodo excluirUsuarioDao!");
+			System.out.println("Erro: " + erro.getMessage());
+		} finally {
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return retorno;
 	}
 
-	public UsuarioVo consultarUsuarioDao(UsuarioVo usuarioVo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
+	//READ ALL
 	public ArrayList<UsuarioVo> consultarTodosUsuariosDao() {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet resultado = null;
+		ArrayList<UsuarioVo> listaUsuarios = new ArrayList<UsuarioVo>();
+		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario";
+		try {
+			resultado = stmt.executeQuery(query);
+			while(resultado.next()) {
+				UsuarioVo usuario = new UsuarioVo;
+				usuario.setIdUsuario(Integer.parseInt(resultado.getString(1)));
+				usuario.setNome(resultado.getString(2));
+				usuario.setCpf(resultado.getString(3));
+				usuario.setEmail(resultado.getString(4));
+				usuario.setDataNascimento(
+						LocalDate.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
+				listaUsuarios.add(usuario);
+			}
+		} catch (SQLException erro) {
+			System.out.println("\nErro ao executar a query do metodo consultarTodosUsuariosDao!");
+			System.out.println("Erro: " + erro.getMessage());
+		} finally {
+			Banco.closeResultSet(resultado);
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return listaUsuarios;
+	}
+	
+	//READE ONE
+	public UsuarioVo consultarUsuarioDao(UsuarioVo usuarioVo) {
 		// TODO Auto-generated method stub
 		return null;
 	}
