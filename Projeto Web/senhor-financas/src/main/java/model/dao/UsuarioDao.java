@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -14,6 +13,7 @@ import model.vo.UsuarioVo;
 
 public class UsuarioDao {
 
+	//DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	
 	public UsuarioVo realizarLoginDao(UsuarioVo usuarioVo) {
 		Connection conn = Banco.getConnection();
@@ -135,6 +135,8 @@ public class UsuarioDao {
 	}
 
 	// READ ALL
+	
+	
 	public ArrayList<UsuarioVo> consultarTodosUsuariosDao() {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
