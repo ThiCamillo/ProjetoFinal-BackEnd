@@ -1,9 +1,7 @@
 package model.vo;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class UsuarioVo {
 
@@ -11,11 +9,11 @@ public class UsuarioVo {
 	private String nome;
 	private String cpf;
 	private String email;
-	private LocalDateTime dataNascimento;
+	private LocalDate dataNascimento;
 	private String login;
 	private String senha;
 	
-	public UsuarioVo(int idUsuario, String nome, String cpf, String email, LocalDateTime dataNascimento, String login,
+	public UsuarioVo(int idUsuario, String nome, String cpf, String email, LocalDate dataNascimento, String login,
 			String senha) {
 		super();
 		this.idUsuario = idUsuario;
@@ -63,11 +61,11 @@ public class UsuarioVo {
 		this.email = email;
 	}
 
-	public LocalDateTime getDataNascimento() {
+	public LocalDate getDataNascimento() {
 		return dataNascimento;
 	}
 
-	public void setDataNascimento(LocalDateTime dataNascimento) {
+	public void setDataNascimento(LocalDate dataNascimento) {
 		this.dataNascimento = dataNascimento;
 	}
 
@@ -98,12 +96,12 @@ public class UsuarioVo {
 		//+ "\nSenha: " + this.getSenha();
 	}
 	
-	private String validarData(LocalDateTime data) {
-		String resultado = "";
-		if(data != null) {
-			resultado = data.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
-		}
-		return resultado;
-	}
+//	private String validarData(LocalDate data) {
+//		String resultado = "";
+//		if(data != null) {
+//			resultado = data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+//		}
+//		return resultado;
+//	}
 	
 }

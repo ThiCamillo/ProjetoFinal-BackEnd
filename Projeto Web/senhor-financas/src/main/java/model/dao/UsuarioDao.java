@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import model.vo.UsuarioVo;
 
 public class UsuarioDao {
 
+	
 	public UsuarioVo realizarLoginDao(UsuarioVo usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
@@ -28,7 +30,7 @@ public class UsuarioDao {
 				usuarioVo.setNome(resultado.getString(2));
 				usuarioVo.setCpf(resultado.getString(3));
 				usuarioVo.setEmail(resultado.getString(4));
-				usuarioVo.setDataNascimento(LocalDateTime.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+				usuarioVo.setDataNascimento(LocalDate.parse(resultado.getString(5)));
 			}
 		} catch (SQLException erro) {
 			System.out.println("Erro ao executar a query no método realizarLoginDAO!");
@@ -147,7 +149,7 @@ public class UsuarioDao {
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
 				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(LocalDateTime.parse(resultado.getString(5),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+				usuario.setDataNascimento(LocalDate.parse(resultado.getString(5)));
 				listaUsuarios.add(usuario);
 			}
 		} catch (SQLException erro) {
@@ -167,7 +169,7 @@ public class UsuarioDao {
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		UsuarioVo usuario = new UsuarioVo();
-		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario" + "WHERE idusuario = "
+		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario" + " WHERE idusuario = "
 				+ usuarioVo.getIdUsuario();
 		try {
 			resultado = stmt.executeQuery(query);
@@ -176,7 +178,7 @@ public class UsuarioDao {
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
 				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(LocalDateTime.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+				usuario.setDataNascimento(LocalDate.parse(resultado.getString(5)));
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarUsuarioDao!");

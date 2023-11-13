@@ -9,6 +9,9 @@ import model.vo.UsuarioVo;
 public class TesteExecutavel {
 
 public static void main(String[] args) {
+	
+	//UsuarioBo.consultarUsuarioBo(usuarioVo);
+	
 	//Scanner teclado= new Scanner(System.in);
 
 	//USUARIO//
@@ -21,15 +24,15 @@ public static void main(String[] args) {
 //	
 //	System.out.println("\n-----------------------\n");
 //	
-//	//consultar um usuario existente
-//	UsuarioVo user3 = new UsuarioVo(1,"","","",null, "", null);
-//	user3 = usuarioBo.consultarUsuarioBo(user3);
-//	if(user3.getCpf() != null) {
-//		System.out.println(user3);
-//	}else {
-//		System.out.println("Não Usuario não localizado");
-//	}
-//	
+	//consultar um usuario existente
+	UsuarioVo user3 = new UsuarioVo(1, "", "", "", null, "", "");
+	user3 = usuarioBo.consultarUsuarioBo(user3);
+	if(user3.getCpf() != null) {
+		System.out.println(user3);
+	}else {
+		System.out.println("Não Usuario não localizado");
+	}
+	
 //	//consultar um usuario inexistente
 //		UsuarioVo user2 = new UsuarioVo(100,"","","",null, "", null);
 //		user2 = usuarioBo.consultarUsuarioBo(user2);
@@ -39,16 +42,16 @@ public static void main(String[] args) {
 //			System.out.println("Usuario não localizado na base de dados");
 //		}
 		
-	//consultar todos usuarios
-	ArrayList<UsuarioVo> lista = new ArrayList<UsuarioVo>();
-	if(lista.isEmpty()) {
-		System.out.println("tem nada");
-	}else {
-		System.out.println("olha ae");
-		for(UsuarioVo u: lista) {
-			System.out.println(u + "\n");
-		}
-	}
+//	//consultar todos usuarios
+//	ArrayList<UsuarioVo> lista = new ArrayList<UsuarioVo>();
+//	if(lista.isEmpty()) {
+//		System.out.println("tem nada");
+//	}else {
+//		System.out.println("olha ae");
+//		for(UsuarioVo u: lista) {
+//			System.out.println(u + "\n");
+//		}
+//	}
 }
 
 }
