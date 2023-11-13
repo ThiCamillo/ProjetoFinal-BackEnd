@@ -21,10 +21,10 @@ public static void main(String[] args) {
 	
 	System.out.println("\n-----------------------\n");
 	//consultar um usuario existente
-	UsuarioVo user1 = new UsuarioVo(1,"","","",null, "", null);
-	user1 = usuarioBo.consultarUsuarioBo(user1);
-	if(user1.getCpf() != null) {
-		System.out.println(user1);
+	UsuarioVo user3 = new UsuarioVo(1,"","","",null, "", null);
+	user3 = usuarioBo.consultarUsuarioBo(user3);
+	if(user3.getCpf() != null) {
+		System.out.println(user3);
 	}else {
 		System.out.println("Usuario não localizado");
 	}
