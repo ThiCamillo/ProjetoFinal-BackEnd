@@ -24,7 +24,7 @@ public class UsuarioBo {
 	}
 	
 	//Read all
-	public static ArrayList<UsuarioVo> consultarTodosUsuariosBo () {
+	public ArrayList<UsuarioVo> consultarTodosUsuariosBo () {
 		UsuarioDao usuarioDao = new UsuarioDao();
 		ArrayList<UsuarioVo> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDao();
 		if(listaUsuariosVo.isEmpty()) {

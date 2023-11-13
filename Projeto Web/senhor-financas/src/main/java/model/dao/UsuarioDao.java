@@ -5,12 +5,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-
-import javax.swing.text.DateFormatter;
 
 import model.vo.UsuarioVo;
 
@@ -150,7 +147,7 @@ public class UsuarioDao {
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
 				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(LocalDateTime.parse(resultado.getString(5), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+				usuario.setDataNascimento(LocalDateTime.parse(resultado.getString(5),DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 				listaUsuarios.add(usuario);
 			}
 		} catch (SQLException erro) {
