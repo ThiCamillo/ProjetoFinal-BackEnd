@@ -51,7 +51,13 @@ public class ReceitaVo {
 	public void setDataReceita(LocalDate dataReceita) {
 		this.dataReceita = dataReceita;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "Código da Receita: " + this.getIdReceita()
+				+ "\nCódigo do Usuário: " + this.getIdUsuario()
+				+ "\nDescricao: " + this.getDescricao()
+				+ "\nValor: " + this.getValor()
+				+ "\nData: " + this.getDataReceita();
+	}
 	
 }

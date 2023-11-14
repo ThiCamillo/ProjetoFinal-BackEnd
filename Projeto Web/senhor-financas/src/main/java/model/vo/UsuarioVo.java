@@ -91,9 +91,9 @@ public class UsuarioVo {
 		+ "\nNome: " + this.getNome() 
 		+ "\nCPF: " + this.getCpf() 
 		+ "\nEmail: " + this.getEmail()
-		+ "\nData Nascimento: " + this.getDataNascimento();
-		//+ "\nLogin: " + this.getLogin()
-		//+ "\nSenha: " + this.getSenha();
+		+ "\nData Nascimento: " + this.getDataNascimento()
+		+ "\nLogin: " + this.getLogin()
+		+ "\nSenha: " + this.getSenha();
 	}
 	
 //	private String validarData(LocalDate data) {
