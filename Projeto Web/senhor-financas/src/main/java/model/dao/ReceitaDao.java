@@ -9,11 +9,12 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model.vo.ReceitaVo;
+import model.vo.UsuarioVo;
 
 public class ReceitaDao {
 
 	// INSERT
-	public ReceitaVo cadastrarReceitaDao1(ReceitaVo receitaVo) {
+	public ReceitaVo cadastrarReceitaDao(ReceitaVo receitaVo) {
 		String query = "INSERT INTO receita (idusuario, descricao, valor, datareceita) VALUES (?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
@@ -37,15 +38,14 @@ public class ReceitaDao {
 		return receitaVo;
 	}
 
+
 	// UPDATE
-	public boolean atualizarUsuarioDao(UsuarioVo usuarioVo) {
+	public boolean atualizarReceitaDao(ReceitaVo receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "UPDATE usuario SET nome = '" + usuarioVo.getNome() + "', cpf = '" + usuarioVo.getCpf()
-				+ "', email = '" + usuarioVo.getEmail() + "', datanascimento = '" + usuarioVo.getDataNascimento()
-				+ "', login = '" + usuarioVo.getLogin() + "', senha = '" + usuarioVo.getSenha() + "WHERE idusuario = "
-				+ usuarioVo.getIdUsuario();
+		String query = "UPDATE receita SET descricao = '" + receitaVo.getDescricao() + "', valor = '" + receitaVo.getValor() + "', datavencimento = '" + receitaVo.getDataReceita()
+				+ "WHERE idreceita = " + receitaVo.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -59,13 +59,14 @@ public class ReceitaDao {
 		}
 		return retorno;
 	}
+	
 
 	// DELETE
-	public boolean excluirUsuarioDao(UsuarioVo usuarioVo) {
+	public boolean excluirReceitaDao(ReceitaVo receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "DELETE FROM usuario WHERE idusuario = " + usuarioVo.getIdUsuario();
+		String query = "DELETE FROM receita WHERE idreceita = " + receitaVo.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -79,26 +80,25 @@ public class ReceitaDao {
 		}
 		return retorno;
 	}
+	
 
 	// READ ALL
-	
-	
-	public ArrayList<UsuarioVo> consultarTodosUsuariosDao() {
+	public ArrayList<ReceitaVo> consultarTodasReceitasDao() {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		ArrayList<UsuarioVo> listaUsuarios = new ArrayList<UsuarioVo>();
-		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario";
+		ArrayList<ReceitaVo> listaReceitas = new ArrayList<ReceitaVo>();
+		String query = "SELECT idreceita, idusuario, descricao, valor, datavencimento FROM receita";
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
-				UsuarioVo usuario = new UsuarioVo();
-				usuario.setIdUsuario(Integer.parseInt(resultado.getString(1)));
-				usuario.setNome(resultado.getString(2));
-				usuario.setCpf(resultado.getString(3));
-				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(LocalDate.parse(resultado.getString(5)));
-				listaUsuarios.add(usuario);
+				ReceitaVo receita = new ReceitaVo();
+				receita.setIdReceita(Integer.parseInt(resultado.getString(1)));
+				receita.setIdUsuario(Integer.parseInt(resultado.getString(2)));
+				receita.setDescricao(resultado.getString(3));
+				receita.setValor(Double.parseDouble(resultado.getString(4)));
+				receita.setDataReceita(LocalDate.parse(resultado.getString(5)));
+				listaReceitas.add(receita);
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarTodosUsuariosDao!");
@@ -108,15 +108,15 @@ public class ReceitaDao {
 			Banco.closeStatement(stmt);
 			Banco.closeConnection(conn);
 		}
-		return listaUsuarios;
+		return listaReceitas;
 	}
-
+	
 	// READ ONE
-	public UsuarioVo consultarUsuarioDao(UsuarioVo usuarioVo) {
+	public ReceitaVo consultarReceitaDao(ReceitaVo receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		UsuarioVo usuario = new UsuarioVo();
+		ReceitaVo usuario = new ReceitaVo();
 		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario" + " WHERE idusuario = "
 				+ usuarioVo.getIdUsuario();
 		try {
@@ -138,33 +138,11 @@ public class ReceitaDao {
 		}
 		return usuario;
 	}
+	
+	
+	
 
 	public boolean verificarCadastroReceitaBaseDadosDao(ReceitaVo receitaVo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public ReceitaVo cadastrarReceitaDao(ReceitaVo receitaVo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ArrayList<ReceitaVo> consultarTodasReceitasDao() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public ReceitaVo consultarReceitaDao(ReceitaVo receitaVo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	public boolean atualizarReceitaDao(ReceitaVo receitaVo) {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	public boolean excluirReceitaDao(ReceitaVo receitaVo) {
 		// TODO Auto-generated method stub
 		return false;
 	}
