@@ -136,7 +136,6 @@ public class UsuarioDao {
 
 	// READ ALL
 	
-	
 	public ArrayList<UsuarioVo> consultarTodosUsuariosDao() {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);

@@ -44,14 +44,14 @@ public class ReceitaDao {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "UPDATE receita SET descricao = '" + receitaVo.getDescricao() + "', valor = '" + receitaVo.getValor() + "', datavencimento = '" + receitaVo.getDataReceita()
+		String query = "UPDATE receita SET descricao = '" + receitaVo.getDescricao() + "', valor = '" + receitaVo.getValor() + "', datareceita = '" + receitaVo.getDataReceita()
 				+ "WHERE idreceita = " + receitaVo.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
 			}
 		} catch (SQLException erro) {
-			System.out.println("\nErro ao executar a query do metodo atualizarUsuarioDao!");
+			System.out.println("\nErro ao executar a query do metodo atualizarReceitaDao!");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
 			Banco.closeStatement(stmt);
@@ -72,7 +72,7 @@ public class ReceitaDao {
 				retorno = true;
 			}
 		} catch (SQLException erro) {
-			System.out.println("\nErro ao executar a query do metodo excluirUsuarioDao!");
+			System.out.println("\nErro ao executar a query do metodo excluirReceitaDao!");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
 			Banco.closeStatement(stmt);
@@ -88,7 +88,7 @@ public class ReceitaDao {
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		ArrayList<ReceitaVo> listaReceitas = new ArrayList<ReceitaVo>();
-		String query = "SELECT idreceita, idusuario, descricao, valor, datavencimento FROM receita";
+		String query = "SELECT idreceita, idusuario, descricao, valor, datareceita FROM receita";
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
@@ -101,7 +101,7 @@ public class ReceitaDao {
 				listaReceitas.add(receita);
 			}
 		} catch (SQLException erro) {
-			System.out.println("\nErro ao executar a query do metodo consultarTodosUsuariosDao!");
+			System.out.println("\nErro ao executar a query do metodo consultarTodasReceitasDao!");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
 			Banco.closeResultSet(resultado);
@@ -112,13 +112,13 @@ public class ReceitaDao {
 	}
 	
 	// READ ONE
-	public ReceitaVo consultarReceitaDao(ReceitaVo receitaVo) {
+	public ReceitaVo consultarReceitaDao(int receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		ReceitaVo usuario = new ReceitaVo();
-		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario" + " WHERE idusuario = "
-				+ usuarioVo.getIdUsuario();
+		String query = "SELECT idusuario, descricao, valor, datareceita FROM receita" + " WHERE idreceita = "
+				+ receitaVo.getIdReceita();
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
@@ -129,7 +129,7 @@ public class ReceitaDao {
 				usuario.setDataNascimento(LocalDate.parse(resultado.getString(5)));
 			}
 		} catch (SQLException erro) {
-			System.out.println("\nErro ao executar a query do metodo consultarUsuarioDao!");
+			System.out.println("\nErro ao executar a query do metodo consultarReceitaDao!");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
 			Banco.closeResultSet(resultado);

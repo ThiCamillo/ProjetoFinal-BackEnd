@@ -1,6 +1,7 @@
 package model.bo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import model.dao.ReceitaDao;
 import model.vo.ReceitaVo;
@@ -20,7 +21,7 @@ public class ReceitaBo {
 		}
 		
 		//Read all
-		public ArrayList<ReceitaVo> consultarTodasReceitasBo () {
+		public ArrayList<ReceitaVo> consultarTodasReceitasBo (int receitaVo) {
 			ReceitaDao receitaDao = new ReceitaDao();
 			ArrayList<ReceitaVo> listaReceitasVo = receitaDao.consultarTodasReceitasDao();
 			if(listaReceitasVo.isEmpty()) {
@@ -30,7 +31,7 @@ public class ReceitaBo {
 		}
 		
 		//Read one
-		public ReceitaVo consultarReceitaBo (ReceitaVo receitaVo) {
+		public ReceitaVo consultarReceitaBo (int receitaVo) {
 			ReceitaDao receitaDao = new ReceitaDao();
 			ReceitaVo receita = receitaDao.consultarReceitaDao(receitaVo);
 			if(receita == null) {

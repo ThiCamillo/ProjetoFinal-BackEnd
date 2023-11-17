@@ -87,11 +87,12 @@ public class UsuarioVo {
 
 	@Override
 	public String toString() {
+		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "Código do Usuario: " + this.getIdUsuario() 
 		+ "\nNome: " + this.getNome() 
 		+ "\nCPF: " + this.getCpf() 
 		+ "\nEmail: " + this.getEmail()
-		+ "\nData Nascimento: " + this.getDataNascimento()
+		+ "\nData Nascimento: " + this.getDataNascimento().format(formataData)
 		+ "\nLogin: " + this.getLogin()
 		+ "\nSenha: " + this.getSenha();
 	}

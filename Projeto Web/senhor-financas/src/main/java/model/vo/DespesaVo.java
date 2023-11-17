@@ -1,6 +1,7 @@
 package model.vo;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class DespesaVo {
 	
@@ -62,12 +63,13 @@ public class DespesaVo {
 	}
 	@Override
 	public String toString() {
+		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "Código da Despesa: " + this.getIdDespesa()
 		+ "\nCódigo do Usuário: " + this.getIdUsuario()
 		+ "\nDescrição: " + this.getDescricao()
 		+ "\nValor: " + this.getValor()
-		+ "\nData de Vencimento: " + this.getDataVencimento()
-		+ "\nData de Pagamento: " + this.getDataPagamento();
+		+ "\nData de Vencimento: " + this.getDataVencimento().format(formataData)
+		+ "\nData de Pagamento: " + this.getDataPagamento().format(formataData);
 	}
 	
 }
