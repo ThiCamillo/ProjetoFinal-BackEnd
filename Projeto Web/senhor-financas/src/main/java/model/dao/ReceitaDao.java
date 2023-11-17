@@ -112,7 +112,7 @@ public class ReceitaDao {
 	}
 	
 	// READ ONE
-	public ReceitaVo consultarReceitaDao(int receitaVo) {
+	public ReceitaVo consultarReceitaDao(ReceitaVo receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
@@ -122,11 +122,10 @@ public class ReceitaDao {
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
-				usuario.setIdUsuario(Integer.parseInt(resultado.getString(1)));
-				usuario.setNome(resultado.getString(2));
-				usuario.setCpf(resultado.getString(3));
-				usuario.setEmail(resultado.getString(4));
-				usuario.setDataNascimento(LocalDate.parse(resultado.getString(5)));
+				receita.setIdUsuario(Integer.parseInt(resultado.getString(1)));
+				receita.setDescricao(resultado.getString(2));
+				receita.setValor(Double.parseDouble(resultado.getString(3)));
+				receita.setDataReceita(LocalDate.parse(resultado.getString(4)));
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarReceitaDao!");
