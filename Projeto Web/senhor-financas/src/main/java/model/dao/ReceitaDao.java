@@ -9,11 +9,34 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 import model.vo.ReceitaVo;
-import model.vo.UsuarioVo;
 
 public class ReceitaDao {
 
 	// INSERT
+	
+	public boolean verificarCadastroReceitaBaseDadosDao(ReceitaVo receitaVo) {
+		Connection conn = Banco.getConnection();
+		Statement stmt = Banco.getStatement(conn);
+		ResultSet resultado = null;
+		boolean retorno = false;
+		String query = "SELECT idreceita FROM receita WHERE idreceita = ' " + receitaVo.getIdReceita() + " ' ";
+		try {
+			resultado = stmt.executeQuery(query);
+			if (resultado.next()) {
+				retorno = true;
+			}
+		} catch (SQLException erro) {
+			System.out.println("\nErro ao executar a query do metodo verificarCadastroReceitaBaseDadosDao!");
+			System.out.println("Erro: " + erro.getMessage());
+		} finally {
+			Banco.closeResultSet(resultado);
+			Banco.closeStatement(stmt);
+			Banco.closeConnection(conn);
+		}
+		return retorno;
+	}
+
+	
 	public ReceitaVo cadastrarReceitaDao(ReceitaVo receitaVo) {
 		String query = "INSERT INTO receita (idusuario, descricao, valor, datareceita) VALUES (?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
@@ -38,14 +61,14 @@ public class ReceitaDao {
 		return receitaVo;
 	}
 
-
 	// UPDATE
 	public boolean atualizarReceitaDao(ReceitaVo receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "UPDATE receita SET descricao = '" + receitaVo.getDescricao() + "', valor = '" + receitaVo.getValor() + "', datareceita = '" + receitaVo.getDataReceita()
-				+ "WHERE idreceita = " + receitaVo.getIdReceita();
+		String query = "UPDATE receita SET descricao = '" + receitaVo.getDescricao() + "', valor = '"
+				+ receitaVo.getValor() + "', datareceita = '" + receitaVo.getDataReceita() + "WHERE idreceita = "
+				+ receitaVo.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -59,7 +82,6 @@ public class ReceitaDao {
 		}
 		return retorno;
 	}
-	
 
 	// DELETE
 	public boolean excluirReceitaDao(ReceitaVo receitaVo) {
@@ -80,7 +102,6 @@ public class ReceitaDao {
 		}
 		return retorno;
 	}
-	
 
 	// READ ALL
 	public ArrayList<ReceitaVo> consultarTodasReceitasDao() {
@@ -110,13 +131,13 @@ public class ReceitaDao {
 		}
 		return listaReceitas;
 	}
-	
+
 	// READ ONE
 	public ReceitaVo consultarReceitaDao(ReceitaVo receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		ReceitaVo usuario = new ReceitaVo();
+		ReceitaVo receita = new ReceitaVo();
 		String query = "SELECT idusuario, descricao, valor, datareceita FROM receita" + " WHERE idreceita = "
 				+ receitaVo.getIdReceita();
 		try {
@@ -135,15 +156,8 @@ public class ReceitaDao {
 			Banco.closeStatement(stmt);
 			Banco.closeConnection(conn);
 		}
-		return usuario;
-	}
-	
-	
-	
-
-	public boolean verificarCadastroReceitaBaseDadosDao(ReceitaVo receitaVo) {
-		// TODO Auto-generated method stub
-		return false;
+		return receita;
 	}
 
+	
 }

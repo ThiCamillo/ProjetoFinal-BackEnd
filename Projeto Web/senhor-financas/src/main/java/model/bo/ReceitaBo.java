@@ -31,7 +31,7 @@ public class ReceitaBo {
 		}
 		
 		//Read one
-		public ReceitaVo consultarReceitaBo (int receitaVo) {
+		public ReceitaVo consultarReceitaBo (ReceitaVo receitaVo) {
 			ReceitaDao receitaDao = new ReceitaDao();
 			ReceitaVo receita = receitaDao.consultarReceitaDao(receitaVo);
 			if(receita == null) {
