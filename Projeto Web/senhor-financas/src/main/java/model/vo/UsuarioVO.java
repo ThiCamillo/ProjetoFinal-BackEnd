@@ -3,7 +3,7 @@ package model.vo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class UsuarioVo {
+public class UsuarioVO {
 
 	private int idUsuario;
 	private String nome;
@@ -13,7 +13,7 @@ public class UsuarioVo {
 	private String login;
 	private String senha;
 	
-	public UsuarioVo(int idUsuario, String nome, String cpf, String email, LocalDate dataNascimento, String login,
+	public UsuarioVO(int idUsuario, String nome, String cpf, String email, LocalDate dataNascimento, String login,
 			String senha) {
 		super();
 		this.idUsuario = idUsuario;
@@ -25,7 +25,7 @@ public class UsuarioVo {
 		this.senha = senha;
 	}
 
-	public UsuarioVo() {
+	public UsuarioVO() {
 		super();
 	}
 

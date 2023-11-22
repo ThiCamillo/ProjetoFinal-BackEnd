@@ -8,13 +8,13 @@ import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-import model.vo.ReceitaVo;
+import model.vo.ReceitaVO;
 
-public class ReceitaDao {
+public class ReceitaDAO {
 
 	// INSERT
 	
-	public boolean verificarCadastroReceitaBaseDadosDao(ReceitaVo receitaVo) {
+	public boolean verificarCadastroReceitaBaseDadosDao(ReceitaVO receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
@@ -37,7 +37,7 @@ public class ReceitaDao {
 	}
 
 	
-	public ReceitaVo cadastrarReceitaDao(ReceitaVo receitaVo) {
+	public ReceitaVO cadastrarReceitaDao(ReceitaVO receitaVo) {
 		String query = "INSERT INTO receita (idusuario, descricao, valor, datareceita) VALUES (?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
@@ -62,7 +62,7 @@ public class ReceitaDao {
 	}
 
 	// UPDATE
-	public boolean atualizarReceitaDao(ReceitaVo receitaVo) {
+	public boolean atualizarReceitaDao(ReceitaVO receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
@@ -84,7 +84,7 @@ public class ReceitaDao {
 	}
 
 	// DELETE
-	public boolean excluirReceitaDao(ReceitaVo receitaVo) {
+	public boolean excluirReceitaDao(ReceitaVO receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
@@ -104,16 +104,16 @@ public class ReceitaDao {
 	}
 
 	// READ ALL
-	public ArrayList<ReceitaVo> consultarTodasReceitasDao() {
+	public ArrayList<ReceitaVO> consultarTodasReceitasDAO(int idUsuario) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		ArrayList<ReceitaVo> listaReceitas = new ArrayList<ReceitaVo>();
+		ArrayList<ReceitaVO> listaReceitas = new ArrayList<ReceitaVO>();
 		String query = "SELECT idreceita, idusuario, descricao, valor, datareceita FROM receita";
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
-				ReceitaVo receita = new ReceitaVo();
+				ReceitaVO receita = new ReceitaVO();
 				receita.setIdReceita(Integer.parseInt(resultado.getString(1)));
 				receita.setIdUsuario(Integer.parseInt(resultado.getString(2)));
 				receita.setDescricao(resultado.getString(3));
@@ -133,20 +133,21 @@ public class ReceitaDao {
 	}
 
 	// READ ONE
-	public ReceitaVo consultarReceitaDao(ReceitaVo receitaVo) {
+	public ReceitaVO consultarReceitaDAO(int idReceita) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		ReceitaVo receita = new ReceitaVo();
-		String query = "SELECT idusuario, descricao, valor, datareceita FROM receita" + " WHERE idreceita = "
-				+ receitaVo.getIdReceita();
+		ReceitaVO receita = new ReceitaVO();
+		String query = "SELECT idreceita, idusuario, descricao, valor, datareceita FROM receita" + " WHERE idreceita = "
+				+ idReceita;
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
-				receita.setIdUsuario(Integer.parseInt(resultado.getString(1)));
-				receita.setDescricao(resultado.getString(2));
-				receita.setValor(Double.parseDouble(resultado.getString(3)));
-				receita.setDataReceita(LocalDate.parse(resultado.getString(4)));
+				receita.setIdReceita(Integer.parseInt(resultado.getString(1)));
+				receita.setIdUsuario(Integer.parseInt(resultado.getString(2)));
+				receita.setDescricao(resultado.getString(3));
+				receita.setValor(Double.parseDouble(resultado.getString(4)));
+				receita.setDataReceita(LocalDate.parse(resultado.getString(5)));
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarReceitaDao!");

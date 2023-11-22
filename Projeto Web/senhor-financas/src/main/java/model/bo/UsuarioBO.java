@@ -2,19 +2,19 @@ package model.bo;
 
 import java.util.ArrayList;
 
-import model.dao.UsuarioDao;
-import model.vo.UsuarioVo;
+import model.dao.UsuarioDAO;
+import model.vo.UsuarioVO;
 
-public class UsuarioBo {
+public class UsuarioBO {
 
-	public UsuarioVo realizarLoginBo(UsuarioVo usuarioVo) {
-		UsuarioDao usuarioDao = new UsuarioDao();
+	public UsuarioVO realizarLoginBo(UsuarioVO usuarioVo) {
+		UsuarioDAO usuarioDao = new UsuarioDAO();
 		return usuarioDao.realizarLoginDao(usuarioVo);
 	}
 	
 	//Create
-	public UsuarioVo cadastrarUsuarioBo (UsuarioVo usuarioVo) {
-		UsuarioDao usuarioDao = new UsuarioDao();
+	public UsuarioVO cadastrarUsuarioBo (UsuarioVO usuarioVo) {
+		UsuarioDAO usuarioDao = new UsuarioDAO();
 		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
 			System.out.println("Usuário ja cadastrado!");
 		}else {
@@ -24,9 +24,9 @@ public class UsuarioBo {
 	}
 	
 	//Read all
-	public ArrayList<UsuarioVo> consultarTodosUsuariosBo () {
-		UsuarioDao usuarioDao = new UsuarioDao();
-		ArrayList<UsuarioVo> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDao();
+	public ArrayList<UsuarioVO> consultarTodosUsuariosBo () {
+		UsuarioDAO usuarioDao = new UsuarioDAO();
+		ArrayList<UsuarioVO> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDao();
 		if(listaUsuariosVo.isEmpty()) {
 			System.out.println("Lista de Usuários está vazia!");
 		}
@@ -34,9 +34,9 @@ public class UsuarioBo {
 	}
 	
 	//Read one
-	public UsuarioVo consultarUsuarioBo (UsuarioVo usuarioVo) {
-		UsuarioDao usuarioDao = new UsuarioDao();
-		UsuarioVo usuario = usuarioDao.consultarUsuarioDao(usuarioVo);
+	public UsuarioVO consultarUsuarioBo (UsuarioVO usuarioVo) {
+		UsuarioDAO usuarioDao = new UsuarioDAO();
+		UsuarioVO usuario = usuarioDao.consultarUsuarioDao(usuarioVo);
 		if(usuario == null) {
 			System.out.println("\nUsuário não localizado!");
 		}
@@ -44,9 +44,9 @@ public class UsuarioBo {
 	}
 	
 	//Update
-	public boolean atualizarUsuarioBo (UsuarioVo usuarioVo) {
+	public boolean atualizarUsuarioBo (UsuarioVO usuarioVo) {
 		boolean resultado = false;
-		UsuarioDao usuarioDao = new UsuarioDao();
+		UsuarioDAO usuarioDao = new UsuarioDAO();
 		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
 			resultado = usuarioDao.atualizarUsuarioDao(usuarioVo);
 		}else {
@@ -56,9 +56,9 @@ public class UsuarioBo {
 	}
 	
 	//Delete
-	public boolean excluirUsuarioBo(UsuarioVo usuarioVo) {
+	public boolean excluirUsuarioBo(UsuarioVO usuarioVo) {
 		boolean resultado = false;
-		UsuarioDao usuarioDao = new UsuarioDao();
+		UsuarioDAO usuarioDao = new UsuarioDAO();
 		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
 			resultado = usuarioDao.excluirUsuarioDao(usuarioVo);
 		}else {

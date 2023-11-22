@@ -3,7 +3,7 @@ package model.vo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class DespesaVo {
+public class DespesaVO {
 	
 	private int idDespesa;
 	private int idUsuario;
@@ -11,7 +11,7 @@ public class DespesaVo {
 	private double valor;
 	private LocalDate dataVencimento;
 	private LocalDate dataPagamento;
-	public DespesaVo(int idDespesa, int idUsuario, String descricao, double valor, LocalDate dataVencimento,
+	public DespesaVO(int idDespesa, int idUsuario, String descricao, double valor, LocalDate dataVencimento,
 			LocalDate dataPagamento) {
 		super();
 		this.idDespesa = idDespesa;
@@ -21,7 +21,7 @@ public class DespesaVo {
 		this.dataVencimento = dataVencimento;
 		this.dataPagamento = dataPagamento;
 	}
-	public DespesaVo() {
+	public DespesaVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

@@ -2,16 +2,16 @@ package model.bo;
 
 import java.util.ArrayList;
 
-import model.dao.DespesaDao;
-import model.dao.ReceitaDao;
-import model.vo.DespesaVo;
-import model.vo.ReceitaVo;
+import model.dao.DespesaDAO;
+import model.dao.ReceitaDAO;
+import model.vo.DespesaVO;
+import model.vo.ReceitaVO;
 
-public class DespesaBo {
+public class DespesaBO {
 
 	//Create
-			public DespesaVo cadastrarDespesaBo (DespesaVo despesaVo) {
-				DespesaDao despesaDao = new DespesaDao();
+			public DespesaVO cadastrarDespesaBo (DespesaVO despesaVo) {
+				DespesaDAO despesaDao = new DespesaDAO();
 				if(despesaDao.verificarCadastroDespesaBaseDadosDao(despesaVo)) {
 					System.out.println("Despesa ja cadastrado!");
 				}else {
@@ -21,9 +21,9 @@ public class DespesaBo {
 			}
 			
 			//Read all
-			public ArrayList<DespesaVo> consultarTodasDespesasBo () {
-				DespesaDao despesaDao = new DespesaDao();
-				ArrayList<DespesaVo> listaDespesasVo = despesaDao.consultarTodasDespesasDao();
+			public ArrayList<DespesaVO> consultarTodasDespesasBo () {
+				DespesaDAO despesaDao = new DespesaDAO();
+				ArrayList<DespesaVO> listaDespesasVo = despesaDao.consultarTodasDespesasDao();
 				if(listaDespesasVo.isEmpty()) {
 					System.out.println("Lista de Despesa está vazia!");
 				}
@@ -31,9 +31,9 @@ public class DespesaBo {
 			}
 			
 			//Read one
-			public DespesaVo consultarDespesaBo (DespesaVo despesaVo) {
-				DespesaDao despesaDao = new DespesaDao();
-				DespesaVo despesa = despesaDao.consultarDespesaDao(despesaVo);
+			public DespesaVO consultarDespesaBo (DespesaVO despesaVo) {
+				DespesaDAO despesaDao = new DespesaDAO();
+				DespesaVO despesa = despesaDao.consultarDespesaDao(despesaVo);
 				if(despesa == null) {
 					System.out.println("\nDespesa não localizada!");
 				}
@@ -41,9 +41,9 @@ public class DespesaBo {
 			}
 			
 			//Update
-			public boolean atualizarDespesaBo (DespesaVo despesaVo) {
+			public boolean atualizarDespesaBo (DespesaVO despesaVo) {
 				boolean resultado = false;
-				DespesaDao despesaDao = new DespesaDao();
+				DespesaDAO despesaDao = new DespesaDAO();
 				if(despesaDao.verificarCadastroDespesaBaseDadosDao(despesaVo)) {
 					resultado = despesaDao.atualizarDespesaDao(despesaVo);
 				}else {
@@ -53,9 +53,9 @@ public class DespesaBo {
 			}
 			
 			//Delete
-			public boolean excluirDespesaBo(DespesaVo despesaVo) {
+			public boolean excluirDespesaBo(DespesaVO despesaVo) {
 				boolean resultado = false;
-				DespesaDao despesaDao = new DespesaDao();
+				DespesaDAO despesaDao = new DespesaDAO();
 				if(despesaDao.verificarCadastroDespesaBaseDadosDao(despesaVo)) {
 					resultado = despesaDao.excluirDespesaDao(despesaVo);
 				}else {

@@ -11,8 +11,8 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
-import model.bo.ReceitaBo;
-import model.vo.ReceitaVo;
+import model.bo.ReceitaBO;
+import model.vo.ReceitaVO;
 
 @Path("/receita")
 public class ReceitaRest {
@@ -21,34 +21,34 @@ public class ReceitaRest {
 	@Path("/cadastrar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public ReceitaVo cadastrarReceitaController(ReceitaVo receitaVo) {
-		ReceitaBo receitaBo = new ReceitaBo();
+	public ReceitaVO cadastrarReceitaController(ReceitaVO receitaVo) {
+		ReceitaBO receitaBo = new ReceitaBO();
 		return receitaBo.cadastrarReceitaBo(receitaVo);
 	}
 	
 	@GET
 	@Path("/listar/{idusuario}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<ReceitaVo> consultarTodasReceitasController(@PathParam("idusuario") int idUsuario) {
-		ReceitaBo receitaBo = new ReceitaBo();
-		return receitaBo.consultarTodasReceitasBo(idUsuario);
+	public List<ReceitaVO> consultarTodasReceitasController(@PathParam("idusuario") int idUsuario) {
+		ReceitaBO receitaBO = new ReceitaBO();
+		return receitaBO.consultarTodasReceitasBO(idUsuario);
 	}
 	
 	@GET
 	@Path("/pesquisar/{idreceita}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public ReceitaVo consultarReceitaController(@PathParam("idreceita") int idReceita) {
-		ReceitaBo receitaBo = new ReceitaBo();
-		return receitaBo.consultarReceitaBo(idReceita);
+	public ReceitaVO consultarReceitaController(@PathParam("idreceita") int idReceita) {
+		ReceitaBO receitaBO = new ReceitaBO();
+		return receitaBO.consultarReceitaBO(idReceita);
 	}
 	
 	@PUT
 	@Path("/atualizar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Boolean atualizarReceitaController(ReceitaVo receitaVo) {
-		ReceitaBo receitaBo = new ReceitaBo();
+	public Boolean atualizarReceitaController(ReceitaVO receitaVo) {
+		ReceitaBO receitaBo = new ReceitaBO();
 		return receitaBo.atualizarReceitaBo(receitaVo);
 	}
 	
@@ -56,8 +56,8 @@ public class ReceitaRest {
 	@Path("/excluir")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Boolean excluirReceitaController(ReceitaVo receitaVo) {
-		ReceitaBo receitaBo = new ReceitaBo();
+	public Boolean excluirReceitaController(ReceitaVO receitaVo) {
+		ReceitaBO receitaBo = new ReceitaBO();
 		return receitaBo.excluirReceitaBo(receitaVo);
 	}
 	

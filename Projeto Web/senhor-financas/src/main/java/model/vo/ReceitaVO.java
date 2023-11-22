@@ -3,14 +3,14 @@ package model.vo;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
-public class ReceitaVo {
+public class ReceitaVO {
 
 	private int idReceita;
 	private int idUsuario;
 	private String descricao;
 	private double valor;
 	private LocalDate dataReceita;
-	public ReceitaVo(int idReceita, int idUsuario, String descricao, double valor, LocalDate dataReceita) {
+	public ReceitaVO(int idReceita, int idUsuario, String descricao, double valor, LocalDate dataReceita) {
 		super();
 		this.idReceita = idReceita;
 		this.idUsuario = idUsuario;
@@ -18,7 +18,7 @@ public class ReceitaVo {
 		this.valor = valor;
 		this.dataReceita = dataReceita;
 	}
-	public ReceitaVo() {
+	public ReceitaVO() {
 		super();
 		// TODO Auto-generated constructor stub
 	}

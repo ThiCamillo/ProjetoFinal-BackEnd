@@ -9,13 +9,13 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-import model.vo.UsuarioVo;
+import model.vo.UsuarioVO;
 
-public class UsuarioDao {
+public class UsuarioDAO {
 
 //	DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	
-	public UsuarioVo realizarLoginDao(UsuarioVo usuarioVo) {
+	public UsuarioVO realizarLoginDao(UsuarioVO usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
@@ -43,7 +43,7 @@ public class UsuarioDao {
 	}
 
 	// INSERT
-	public boolean verificarCadastroUsuarioBaseDadosDao(UsuarioVo usuarioVo) {
+	public boolean verificarCadastroUsuarioBaseDadosDao(UsuarioVO usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
@@ -65,7 +65,7 @@ public class UsuarioDao {
 		return retorno;
 	}
 
-	public UsuarioVo cadastrarUsuarioDao(UsuarioVo usuarioVo) {
+	public UsuarioVO cadastrarUsuarioDao(UsuarioVO usuarioVo) {
 		String query = "INSERT INTO usuario (nome, cpf, email, datanascimento, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
@@ -92,7 +92,7 @@ public class UsuarioDao {
 	}
 
 	// UPDATE
-	public boolean atualizarUsuarioDao(UsuarioVo usuarioVo) {
+	public boolean atualizarUsuarioDao(UsuarioVO usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
@@ -115,7 +115,7 @@ public class UsuarioDao {
 	}
 
 	// DELETE
-	public boolean excluirUsuarioDao(UsuarioVo usuarioVo) {
+	public boolean excluirUsuarioDao(UsuarioVO usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
@@ -136,16 +136,16 @@ public class UsuarioDao {
 
 	// READ ALL
 	
-	public ArrayList<UsuarioVo> consultarTodosUsuariosDao() {
+	public ArrayList<UsuarioVO> consultarTodosUsuariosDao() {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		ArrayList<UsuarioVo> listaUsuarios = new ArrayList<UsuarioVo>();
+		ArrayList<UsuarioVO> listaUsuarios = new ArrayList<UsuarioVO>();
 		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario";
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
-				UsuarioVo usuario = new UsuarioVo();
+				UsuarioVO usuario = new UsuarioVO();
 				usuario.setIdUsuario(Integer.parseInt(resultado.getString(1)));
 				usuario.setNome(resultado.getString(2));
 				usuario.setCpf(resultado.getString(3));
@@ -165,11 +165,11 @@ public class UsuarioDao {
 	}
 
 	// READ ONE
-	public UsuarioVo consultarUsuarioDao(UsuarioVo usuarioVo) {
+	public UsuarioVO consultarUsuarioDao(UsuarioVO usuarioVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
-		UsuarioVo usuario = new UsuarioVo();
+		UsuarioVO usuario = new UsuarioVO();
 		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario" + " WHERE idusuario = "
 				+ usuarioVo.getIdUsuario();
 		try {
