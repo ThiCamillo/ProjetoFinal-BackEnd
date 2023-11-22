@@ -62,7 +62,7 @@ public class ReceitaDAO {
 	}
 
 	// UPDATE
-	public boolean atualizarReceitaDao(ReceitaVO receitaVo) {
+	public boolean atualizarReceitaDAO(ReceitaVO receitaVo) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;

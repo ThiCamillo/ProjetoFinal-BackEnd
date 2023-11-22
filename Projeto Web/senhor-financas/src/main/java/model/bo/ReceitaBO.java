@@ -9,7 +9,7 @@ import model.vo.ReceitaVO;
 public class ReceitaBO {
 
 	//Create - CADASTRAR
-		public ReceitaVO cadastrarReceitaBo (ReceitaVO receitaVO) {
+		public ReceitaVO cadastrarReceitaBO (ReceitaVO receitaVO) {
 			ReceitaDAO receitaDAO = new ReceitaDAO();
 			if(receitaDAO.verificarCadastroReceitaBaseDadosDao(receitaVO)) {
 				System.out.println("receita ja cadastrada!");
@@ -40,11 +40,11 @@ public class ReceitaBO {
 		}
 		
 		//Update
-		public boolean atualizarReceitaBo (ReceitaVO receitaVo) {
+		public boolean atualizarReceitaBO (ReceitaVO receitaVO) {
 			boolean resultado = false;
-			ReceitaDAO receitaDao = new ReceitaDAO();
-			if(receitaDao.verificarCadastroReceitaBaseDadosDao(receitaVo)) {
-				resultado = receitaDao.atualizarReceitaDao(receitaVo);
+			ReceitaDAO receitaDAO = new ReceitaDAO();
+			if(receitaDAO.verificarCadastroReceitaBaseDadosDao(receitaVO)) {
+				resultado = receitaDAO.atualizarReceitaDAO(receitaVO);
 			}else {
 				System.out.println("Receita não existe");
 			}
@@ -52,7 +52,7 @@ public class ReceitaBO {
 		}
 		
 		//Delete
-		public boolean excluirReceitaBo(ReceitaVO receitaVo) {
+		public boolean excluirReceitaBO(ReceitaVO receitaVo) {
 			boolean resultado = false;
 			ReceitaDAO receitaDao = new ReceitaDAO();
 			if(receitaDao.verificarCadastroReceitaBaseDadosDao(receitaVo)) {

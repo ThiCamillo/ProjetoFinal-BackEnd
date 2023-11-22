@@ -22,8 +22,8 @@ public class ReceitaRest {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public ReceitaVO cadastrarReceitaController(ReceitaVO receitaVo) {
-		ReceitaBO receitaBo = new ReceitaBO();
-		return receitaBo.cadastrarReceitaBo(receitaVo);
+		ReceitaBO receitaBO = new ReceitaBO();
+		return receitaBO.cadastrarReceitaBO(receitaVo);
 	}
 	
 	@GET
@@ -47,18 +47,18 @@ public class ReceitaRest {
 	@Path("/atualizar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Boolean atualizarReceitaController(ReceitaVO receitaVo) {
-		ReceitaBO receitaBo = new ReceitaBO();
-		return receitaBo.atualizarReceitaBo(receitaVo);
+	public Boolean atualizarReceitaController(ReceitaVO receitaVO) {
+		ReceitaBO receitaBO = new ReceitaBO();
+		return receitaBO.atualizarReceitaBO(receitaVO);
 	}
 	
 	@DELETE
 	@Path("/excluir")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public Boolean excluirReceitaController(ReceitaVO receitaVo) {
-		ReceitaBO receitaBo = new ReceitaBO();
-		return receitaBo.excluirReceitaBo(receitaVo);
+	public Boolean excluirReceitaController(ReceitaVO receitaVO) {
+		ReceitaBO receitaBO = new ReceitaBO();
+		return receitaBO.excluirReceitaBO(receitaVO);
 	}
 	
 }
