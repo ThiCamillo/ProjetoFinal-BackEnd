@@ -15,9 +15,18 @@ public class UsuarioRest {
 	@Path("/cadastrar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public UsuarioVO cadastrarUsuarioController(UsuarioVO usuarioVo) {
+	public UsuarioVO cadastrarUsuarioController(UsuarioVO usuarioVO) {
 		UsuarioBO usuarioBO = new UsuarioBO();
-		return usuarioBO.cadastrarUsuarioBO(usuarioVo);
+		return usuarioBO.cadastrarUsuarioBO(usuarioVO);
+	}
+
+	@POST
+	@Path("/logar")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public UsuarioVO realizarLoginController(UsuarioVO usuarioVO) {
+		UsuarioBO usuarioBO = new UsuarioBO();
+		return usuarioBO.realizarLoginBO(usuarioVO);
 	}
 
 }

@@ -21,7 +21,7 @@ public class UsuarioDAO {
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 
-		String query = "SELECT idusuario, nome, cpf, email, " + "datanascimento" + "FROM usuario"
+		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario"
 				+ " WHERE login like '" + usuarioVO.getLogin() + "'" + " AND senha like '" + usuarioVO.getSenha() + "'";
 
 		try {
