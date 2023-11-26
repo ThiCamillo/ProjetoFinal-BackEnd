@@ -12,14 +12,13 @@ import model.vo.ReceitaVO;
 
 public class ReceitaDAO {
 
-	// INSERT
-	
-	public boolean verificarCadastroReceitaBaseDadosDao(ReceitaVO receitaVo) {
+	// VERIFICAR CADASTRO RECEITA
+	public boolean verificarCadastroReceitaBaseDadosDAO(ReceitaVO receitaVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		boolean retorno = false;
-		String query = "SELECT idreceita FROM receita WHERE idreceita = ' " + receitaVo.getIdReceita() + " ' ";
+		String query = "SELECT idreceita FROM receita WHERE idreceita = ' " + receitaVO.getIdReceita() + " ' ";
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
@@ -36,20 +35,20 @@ public class ReceitaDAO {
 		return retorno;
 	}
 
-	
-	public ReceitaVO cadastrarReceitaDao(ReceitaVO receitaVo) {
+	// INSERT -- CADASTRAR
+	public ReceitaVO cadastrarReceitaDAO(ReceitaVO receitaVO) {
 		String query = "INSERT INTO receita (idusuario, descricao, valor, datareceita) VALUES (?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
 		try {
-			pstmt.setInt(1, receitaVo.getIdUsuario());
-			pstmt.setString(2, receitaVo.getDescricao());
-			pstmt.setDouble(3, receitaVo.getValor());
-			pstmt.setObject(4, receitaVo.getDataReceita());
+			pstmt.setInt(1, receitaVO.getIdUsuario());
+			pstmt.setString(2, receitaVO.getDescricao());
+			pstmt.setDouble(3, receitaVO.getValor());
+			pstmt.setObject(4, receitaVO.getDataReceita());
 			pstmt.execute();
 			ResultSet resultado = pstmt.getGeneratedKeys();
 			if (resultado.next()) {
-				receitaVo.setIdReceita(resultado.getInt(1));
+				receitaVO.setIdReceita(resultado.getInt(1));
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo cadastrarReceitaDao!");
@@ -58,17 +57,17 @@ public class ReceitaDAO {
 			Banco.closeStatement(pstmt);
 			Banco.closeConnection(conn);
 		}
-		return receitaVo;
+		return receitaVO;
 	}
 
-	// UPDATE
-	public boolean atualizarReceitaDAO(ReceitaVO receitaVo) {
+	// UPDATE --ATUALIZAR
+	public boolean atualizarReceitaDAO(ReceitaVO receitaVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "UPDATE receita SET descricao = '" + receitaVo.getDescricao() + "', valor = '"
-				+ receitaVo.getValor() + "', datareceita = '" + receitaVo.getDataReceita() + "WHERE idreceita = "
-				+ receitaVo.getIdReceita();
+		String query = "UPDATE receita SET descricao = '" + receitaVO.getDescricao() + "', valor = '"
+				+ receitaVO.getValor() + "', datareceita = '" + receitaVO.getDataReceita() + "WHERE idreceita = "
+				+ receitaVO.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -83,12 +82,12 @@ public class ReceitaDAO {
 		return retorno;
 	}
 
-	// DELETE
-	public boolean excluirReceitaDao(ReceitaVO receitaVo) {
+	// DELETE --EXCLUIR
+	public boolean excluirReceitaDAO(ReceitaVO receitaVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "DELETE FROM receita WHERE idreceita = " + receitaVo.getIdReceita();
+		String query = "DELETE FROM receita WHERE idreceita = " + receitaVO.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -103,13 +102,14 @@ public class ReceitaDAO {
 		return retorno;
 	}
 
-	// READ ALL
+	// READ ALL -- LISTAR TODAS RECEITAS
 	public ArrayList<ReceitaVO> consultarTodasReceitasDAO(int idUsuario) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		ArrayList<ReceitaVO> listaReceitas = new ArrayList<ReceitaVO>();
-		String query = "SELECT idreceita, idusuario, descricao, valor, datareceita FROM receita";
+		String query = "SELECT idreceita, idusuario, descricao, valor, datareceita FROM receita WHERE idusuario = "
+				+ idUsuario;
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
@@ -132,7 +132,7 @@ public class ReceitaDAO {
 		return listaReceitas;
 	}
 
-	// READ ONE
+	// READ ONE -- PESQUISAR UMA RECEITA
 	public ReceitaVO consultarReceitaDAO(int idReceita) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
@@ -160,5 +160,4 @@ public class ReceitaDAO {
 		return receita;
 	}
 
-	
 }

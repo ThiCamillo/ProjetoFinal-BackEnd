@@ -9,16 +9,16 @@ public class UsuarioBO {
 
 	public UsuarioVO realizarLoginBo(UsuarioVO usuarioVo) {
 		UsuarioDAO usuarioDao = new UsuarioDAO();
-		return usuarioDao.realizarLoginDao(usuarioVo);
+		return usuarioDao.realizarLoginDAO(usuarioVo);
 	}
 	
 	//Create
 	public UsuarioVO cadastrarUsuarioBo (UsuarioVO usuarioVo) {
 		UsuarioDAO usuarioDao = new UsuarioDAO();
-		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
+		if(usuarioDao.verificarCadastroUsuarioBaseDadosDAO(usuarioVo)) {
 			System.out.println("Usuário ja cadastrado!");
 		}else {
-			usuarioVo = usuarioDao.cadastrarUsuarioDao(usuarioVo);
+			usuarioVo = usuarioDao.cadastrarUsuarioDAO(usuarioVo);
 		}
 		return usuarioVo;
 	}
@@ -26,7 +26,7 @@ public class UsuarioBO {
 	//Read all
 	public ArrayList<UsuarioVO> consultarTodosUsuariosBo () {
 		UsuarioDAO usuarioDao = new UsuarioDAO();
-		ArrayList<UsuarioVO> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDao();
+		ArrayList<UsuarioVO> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDAO();
 		if(listaUsuariosVo.isEmpty()) {
 			System.out.println("Lista de Usuários está vazia!");
 		}
@@ -36,7 +36,7 @@ public class UsuarioBO {
 	//Read one
 	public UsuarioVO consultarUsuarioBo (UsuarioVO usuarioVo) {
 		UsuarioDAO usuarioDao = new UsuarioDAO();
-		UsuarioVO usuario = usuarioDao.consultarUsuarioDao(usuarioVo);
+		UsuarioVO usuario = usuarioDao.consultarUsuarioDAO(usuarioVo);
 		if(usuario == null) {
 			System.out.println("\nUsuário não localizado!");
 		}
@@ -47,8 +47,8 @@ public class UsuarioBO {
 	public boolean atualizarUsuarioBo (UsuarioVO usuarioVo) {
 		boolean resultado = false;
 		UsuarioDAO usuarioDao = new UsuarioDAO();
-		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
-			resultado = usuarioDao.atualizarUsuarioDao(usuarioVo);
+		if(usuarioDao.verificarCadastroUsuarioBaseDadosDAO(usuarioVo)) {
+			resultado = usuarioDao.atualizarUsuarioDAO(usuarioVo);
 		}else {
 			System.out.println("usuario não existe");
 		}
@@ -59,8 +59,8 @@ public class UsuarioBO {
 	public boolean excluirUsuarioBo(UsuarioVO usuarioVo) {
 		boolean resultado = false;
 		UsuarioDAO usuarioDao = new UsuarioDAO();
-		if(usuarioDao.verificarCadastroUsuarioBaseDadosDao(usuarioVo)) {
-			resultado = usuarioDao.excluirUsuarioDao(usuarioVo);
+		if(usuarioDao.verificarCadastroUsuarioBaseDadosDAO(usuarioVo)) {
+			resultado = usuarioDao.excluirUsuarioDAO(usuarioVo);
 		}else {
 			System.out.println("Usuario não existe na base de dados");
 		}

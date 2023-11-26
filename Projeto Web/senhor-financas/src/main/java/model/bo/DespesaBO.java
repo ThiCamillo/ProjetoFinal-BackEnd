@@ -12,7 +12,7 @@ public class DespesaBO {
 	//Create
 			public DespesaVO cadastrarDespesaBo (DespesaVO despesaVo) {
 				DespesaDAO despesaDao = new DespesaDAO();
-				if(despesaDao.verificarCadastroDespesaBaseDadosDao(despesaVo)) {
+				if(despesaDao.verificarCadastroDespesaBaseDadosDAO(despesaVo)) {
 					System.out.println("Despesa ja cadastrado!");
 				}else {
 					despesaVo = despesaDao.cadastrarDespesaDao(despesaVo);
@@ -44,7 +44,7 @@ public class DespesaBO {
 			public boolean atualizarDespesaBo (DespesaVO despesaVo) {
 				boolean resultado = false;
 				DespesaDAO despesaDao = new DespesaDAO();
-				if(despesaDao.verificarCadastroDespesaBaseDadosDao(despesaVo)) {
+				if(despesaDao.verificarCadastroDespesaBaseDadosDAO(despesaVo)) {
 					resultado = despesaDao.atualizarDespesaDao(despesaVo);
 				}else {
 					System.out.println("Despesa não existe");
@@ -56,7 +56,7 @@ public class DespesaBO {
 			public boolean excluirDespesaBo(DespesaVO despesaVo) {
 				boolean resultado = false;
 				DespesaDAO despesaDao = new DespesaDAO();
-				if(despesaDao.verificarCadastroDespesaBaseDadosDao(despesaVo)) {
+				if(despesaDao.verificarCadastroDespesaBaseDadosDAO(despesaVo)) {
 					resultado = despesaDao.excluirDespesaDao(despesaVo);
 				}else {
 					System.out.println("Despesa não existe na base de dados");

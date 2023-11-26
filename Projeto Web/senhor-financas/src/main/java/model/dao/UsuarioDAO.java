@@ -15,22 +15,23 @@ public class UsuarioDAO {
 
 //	DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd-MM-yyyy");
 	
-	public UsuarioVO realizarLoginDao(UsuarioVO usuarioVo) {
+	//REALIZA LOGIN
+	public UsuarioVO realizarLoginDAO(UsuarioVO usuarioVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 
 		String query = "SELECT idusuario, nome, cpf, email, " + "datanascimento" + "FROM usuario"
-				+ " WHERE login like '" + usuarioVo.getLogin() + "'" + " AND senha like '" + usuarioVo.getSenha() + "'";
+				+ " WHERE login like '" + usuarioVO.getLogin() + "'" + " AND senha like '" + usuarioVO.getSenha() + "'";
 
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
-				usuarioVo.setIdUsuario(Integer.parseInt(resultado.getString(1)));
-				usuarioVo.setNome(resultado.getString(2));
-				usuarioVo.setCpf(resultado.getString(3));
-				usuarioVo.setEmail(resultado.getString(4));
-				usuarioVo.setDataNascimento(LocalDate.parse(resultado.getString(5)));
+				usuarioVO.setIdUsuario(Integer.parseInt(resultado.getString(1)));
+				usuarioVO.setNome(resultado.getString(2));
+				usuarioVO.setCpf(resultado.getString(3));
+				usuarioVO.setEmail(resultado.getString(4));
+				usuarioVO.setDataNascimento(LocalDate.parse(resultado.getString(5)));
 			}
 		} catch (SQLException erro) {
 			System.out.println("Erro ao executar a query no método realizarLoginDAO!");
@@ -39,16 +40,16 @@ public class UsuarioDAO {
 			Banco.closeStatement(stmt);
 			Banco.closeConnection(conn);
 		}
-		return usuarioVo;
+		return usuarioVO;
 	}
 
-	// INSERT
-	public boolean verificarCadastroUsuarioBaseDadosDao(UsuarioVO usuarioVo) {
+	//VERIFICAR CADASTRO
+	public boolean verificarCadastroUsuarioBaseDadosDAO(UsuarioVO usuarioVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		boolean retorno = false;
-		String query = "SELECT cpf FROM usuario WHERE cpf = ' " + usuarioVo.getCpf() + " ' ";
+		String query = "SELECT cpf FROM usuario WHERE cpf = ' " + usuarioVO.getCpf() + " ' ";
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
@@ -65,21 +66,22 @@ public class UsuarioDAO {
 		return retorno;
 	}
 
-	public UsuarioVO cadastrarUsuarioDao(UsuarioVO usuarioVo) {
+	// INSERT  -- CADASTRAR
+	public UsuarioVO cadastrarUsuarioDAO(UsuarioVO usuarioVO) {
 		String query = "INSERT INTO usuario (nome, cpf, email, datanascimento, login, senha) VALUES (?, ?, ?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
 		try {
-			pstmt.setString(1, usuarioVo.getNome());
-			pstmt.setString(2, usuarioVo.getCpf());
-			pstmt.setString(3, usuarioVo.getEmail());
-			pstmt.setObject(4, usuarioVo.getDataNascimento());
-			pstmt.setString(5, usuarioVo.getLogin());
-			pstmt.setString(6, usuarioVo.getSenha());
+			pstmt.setString(1, usuarioVO.getNome());
+			pstmt.setString(2, usuarioVO.getCpf());
+			pstmt.setString(3, usuarioVO.getEmail());
+			pstmt.setObject(4, usuarioVO.getDataNascimento());
+			pstmt.setString(5, usuarioVO.getLogin());
+			pstmt.setString(6, usuarioVO.getSenha());
 			pstmt.execute();
 			ResultSet resultado = pstmt.getGeneratedKeys();
 			if (resultado.next()) {
-				usuarioVo.setIdUsuario(resultado.getInt(1));
+				usuarioVO.setIdUsuario(resultado.getInt(1));
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo cadastrarUsuarioDao!");
@@ -88,18 +90,18 @@ public class UsuarioDAO {
 			Banco.closeStatement(pstmt);
 			Banco.closeConnection(conn);
 		}
-		return usuarioVo;
+		return usuarioVO;
 	}
 
 	// UPDATE
-	public boolean atualizarUsuarioDao(UsuarioVO usuarioVo) {
+	public boolean atualizarUsuarioDAO(UsuarioVO usuarioVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "UPDATE usuario SET nome = '" + usuarioVo.getNome() + "', cpf = '" + usuarioVo.getCpf()
-				+ "', email = '" + usuarioVo.getEmail() + "', datanascimento = '" + usuarioVo.getDataNascimento()
-				+ "', login = '" + usuarioVo.getLogin() + "', senha = '" + usuarioVo.getSenha() + "WHERE idusuario = "
-				+ usuarioVo.getIdUsuario();
+		String query = "UPDATE usuario SET nome = '" + usuarioVO.getNome() + "', cpf = '" + usuarioVO.getCpf()
+				+ "', email = '" + usuarioVO.getEmail() + "', datanascimento = '" + usuarioVO.getDataNascimento()
+				+ "', login = '" + usuarioVO.getLogin() + "', senha = '" + usuarioVO.getSenha() + "WHERE idusuario = "
+				+ usuarioVO.getIdUsuario();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -115,11 +117,11 @@ public class UsuarioDAO {
 	}
 
 	// DELETE
-	public boolean excluirUsuarioDao(UsuarioVO usuarioVo) {
+	public boolean excluirUsuarioDAO(UsuarioVO usuarioVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "DELETE FROM usuario WHERE idusuario = " + usuarioVo.getIdUsuario();
+		String query = "DELETE FROM usuario WHERE idusuario = " + usuarioVO.getIdUsuario();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
@@ -136,7 +138,7 @@ public class UsuarioDAO {
 
 	// READ ALL
 	
-	public ArrayList<UsuarioVO> consultarTodosUsuariosDao() {
+	public ArrayList<UsuarioVO> consultarTodosUsuariosDAO() {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
@@ -165,13 +167,13 @@ public class UsuarioDAO {
 	}
 
 	// READ ONE
-	public UsuarioVO consultarUsuarioDao(UsuarioVO usuarioVo) {
+	public UsuarioVO consultarUsuarioDAO(UsuarioVO usuarioVO) {
 		Connection conn = Banco.getConnection();
 		Statement stmt = Banco.getStatement(conn);
 		ResultSet resultado = null;
 		UsuarioVO usuario = new UsuarioVO();
 		String query = "SELECT idusuario, nome, cpf, email, datanascimento FROM usuario" + " WHERE idusuario = "
-				+ usuarioVo.getIdUsuario();
+				+ usuarioVO.getIdUsuario();
 		try {
 			resultado = stmt.executeQuery(query);
 			if (resultado.next()) {
