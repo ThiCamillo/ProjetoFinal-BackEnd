@@ -11,7 +11,7 @@ import jakarta.ws.rs.core.MediaType;
 import model.bo.ReceitaBO;
 import model.vo.ReceitaVO;
 
-@Path("/relatorio")
+//@Path("/relatorio")
 public class RelatorioRest {
 
 //	@GET

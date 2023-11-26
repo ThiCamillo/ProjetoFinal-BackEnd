@@ -57,7 +57,7 @@ public class ReceitaVO {
 		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		return "Código da Receita: " + this.getIdReceita()
 				+ "\nCódigo do Usuário: " + this.getIdUsuario()
-				+ "\nDescricao: " + this.getDescricao()
+				+ "\nDescrição: " + this.getDescricao()
 				+ "\nValor: " + this.getValor()
 				+ "\nData: " + this.getDataReceita().format(formataData);
 	}
