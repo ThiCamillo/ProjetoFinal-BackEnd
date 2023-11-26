@@ -7,64 +7,63 @@ import model.vo.UsuarioVO;
 
 public class UsuarioBO {
 
-	public UsuarioVO realizarLoginBo(UsuarioVO usuarioVo) {
-		UsuarioDAO usuarioDao = new UsuarioDAO();
-		return usuarioDao.realizarLoginDAO(usuarioVo);
+	public UsuarioVO realizarLoginBO(UsuarioVO usuarioVO) {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		return usuarioDAO.realizarLoginDAO(usuarioVO);
 	}
-	
-	//Create
-	public UsuarioVO cadastrarUsuarioBo (UsuarioVO usuarioVo) {
-		UsuarioDAO usuarioDao = new UsuarioDAO();
-		if(usuarioDao.verificarCadastroUsuarioBaseDadosDAO(usuarioVo)) {
+
+	// Create - CADASTRAR
+	public UsuarioVO cadastrarUsuarioBO(UsuarioVO usuarioVO) {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		if (usuarioDAO.verificarCadastroUsuarioBaseDadosDAO(usuarioVO)) {
 			System.out.println("Usuário ja cadastrado!");
-		}else {
-			usuarioVo = usuarioDao.cadastrarUsuarioDAO(usuarioVo);
+		} else {
+			usuarioVO = usuarioDAO.cadastrarUsuarioDAO(usuarioVO);
 		}
-		return usuarioVo;
+		return usuarioVO;
 	}
-	
-	//Read all
-	public ArrayList<UsuarioVO> consultarTodosUsuariosBo () {
-		UsuarioDAO usuarioDao = new UsuarioDAO();
-		ArrayList<UsuarioVO> listaUsuariosVo = usuarioDao.consultarTodosUsuariosDAO();
-		if(listaUsuariosVo.isEmpty()) {
+
+	// Read all
+	public ArrayList<UsuarioVO> consultarTodosUsuariosBO() {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		ArrayList<UsuarioVO> listaUsuariosVO = usuarioDAO.consultarTodosUsuariosDAO();
+		if (listaUsuariosVO.isEmpty()) {
 			System.out.println("Lista de Usuários está vazia!");
 		}
-		return listaUsuariosVo;
+		return listaUsuariosVO;
 	}
-	
-	//Read one
-	public UsuarioVO consultarUsuarioBo (UsuarioVO usuarioVo) {
-		UsuarioDAO usuarioDao = new UsuarioDAO();
-		UsuarioVO usuario = usuarioDao.consultarUsuarioDAO(usuarioVo);
-		if(usuario == null) {
+
+	// Read one
+	public UsuarioVO consultarUsuarioBO(UsuarioVO usuarioVO) {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		UsuarioVO usuario = usuarioDAO.consultarUsuarioDAO(usuarioVO);
+		if (usuario == null) {
 			System.out.println("\nUsuário não localizado!");
 		}
 		return usuario;
 	}
-	
-	//Update
-	public boolean atualizarUsuarioBo (UsuarioVO usuarioVo) {
+
+	// Update
+	public boolean atualizarUsuarioBO(UsuarioVO usuarioVO) {
 		boolean resultado = false;
-		UsuarioDAO usuarioDao = new UsuarioDAO();
-		if(usuarioDao.verificarCadastroUsuarioBaseDadosDAO(usuarioVo)) {
-			resultado = usuarioDao.atualizarUsuarioDAO(usuarioVo);
-		}else {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		if (usuarioDAO.verificarCadastroUsuarioBaseDadosDAO(usuarioVO)) {
+			resultado = usuarioDAO.atualizarUsuarioDAO(usuarioVO);
+		} else {
 			System.out.println("usuario não existe");
 		}
 		return resultado;
 	}
-	
-	//Delete
-	public boolean excluirUsuarioBo(UsuarioVO usuarioVo) {
+
+	// Delete
+	public boolean excluirUsuarioBO(UsuarioVO usuarioVO) {
 		boolean resultado = false;
-		UsuarioDAO usuarioDao = new UsuarioDAO();
-		if(usuarioDao.verificarCadastroUsuarioBaseDadosDAO(usuarioVo)) {
-			resultado = usuarioDao.excluirUsuarioDAO(usuarioVo);
-		}else {
+		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		if (usuarioDAO.verificarCadastroUsuarioBaseDadosDAO(usuarioVO)) {
+			resultado = usuarioDAO.excluirUsuarioDAO(usuarioVO);
+		} else {
 			System.out.println("Usuario não existe na base de dados");
 		}
 		return resultado;
-
 	}
 }
