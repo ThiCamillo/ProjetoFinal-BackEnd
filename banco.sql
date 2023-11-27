@@ -9,7 +9,7 @@ idusuario int not null primary key auto_increment,
 nome varchar(255),
 cpf varchar(11) unique,
 email varchar(255),
-datanascimento datetime,
+datanascimento date,
 login varchar(255),
 senha varchar(255)
 );
@@ -20,7 +20,7 @@ idreceita int not null primary key auto_increment,
 idusuario int, foreign key (idusuario) references usuario (idusuario),
 descricao varchar(255),
 valor decimal(10,2),
-datareceita datetime
+datareceita date
 );
 
 
@@ -29,8 +29,8 @@ iddespesa int not null primary key auto_increment,
 idusuario int, foreign key (idusuario) references usuario (idusuario),
 descricao varchar(255),
 valor decimal(10,2),
-datavencimento datetime,
-datapagamento datetime
+datavencimento date,
+datapagamento date
 );
 
 
