@@ -21,9 +21,9 @@ public class ReceitaRest {
 	@Path("/cadastrar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public ReceitaVO cadastrarReceitaController(ReceitaVO receitaVo) {
+	public ReceitaVO cadastrarReceitaController(ReceitaVO receitaVO) {
 		ReceitaBO receitaBO = new ReceitaBO();
-		return receitaBO.cadastrarReceitaBO(receitaVo);
+		return receitaBO.cadastrarReceitaBO(receitaVO);
 	}
 	
 	@GET
