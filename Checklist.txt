@@ -1,0 +1,151 @@
+FRONTEND:
+
+O projeto deverá apresentar as seguintes funcionalidades:
+1 – Tela de Login.
+A Tela de Login deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” no botão;
+- Deve ter um link “Criar Conta” sem a decoração do link;
+- Deve apresentar um degradê na cor de fundo;
+- Deve exigir que o campo de login e de senha tenham pelo menos 3 caracteres e sejam de preenchimento obrigatório;
+- Deve validar o login e senha no banco de dados. 
+- Caso o login e senha estejam errados, o sistema deve apresentar uma mensagem de erro “Login ou Senha incorreto.”;
+- Caso o login e senha estejam corretos, o usuário deve ser redirecionado para a tela principal do sistema.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+
+2 – Tela de Cadastro de novo Usuário.
+
+A Tela de Cadastro de novo Usuário deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” no botão;
+- Deve apresentar um degradê na cor de fundo;
+- Deve exigir que o campo de nome, login e de senha tenham pelo menos 3 caracteres e sejam obrigatórios o preenchimento;
+- O campo CPF deve exigir apenas números e ser obrigatório o preenchimento;
+- O campo E-mail deve exigir um endereço de e-mail e ser obrigatório o seu preenchimento;
+- O campo Data de Nascimento deve apresentar um calendário para o usuário selecionar a data e seu preenchimento ser obrigatório. 
+- Ao clicar em Cadastrar o sistema deve inserir o usuário no banco de dados, apresentar uma mensagem de “Usuário Cadastrado com Sucesso” e redirecionar o sistema para a Tela de Login.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+
+3 – Tela de Receitas (Listagem e Exclusão).
+A Tela de Receitas deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” em todos os botões;
+- Deve apresentar um degradê na cor de fundo;
+- O botão “Buscar” deve buscar no banco de dados todas as receitas do usuário logado;
+- O botão “Limpar” deve limpar na tela os registros da tabela;
+- O botão “Cadastrar” deve redirecionar o usuário para a tela de cadastro de receita;
+- O botão “Editar” deve redirecionar o usuário para a tela de cadastro de receita levando as informações da linha da tabela para serem atualizadas. 
+- O botão “Excluir” deve apagar no banco de dados o registro da receita selecionada e atualizar a tabela sem a receita.
+- A Exclusão de uma receita deve informar uma mensagem para o usuário que a receita foi excluída com sucesso.
+- A tabela deve apresentar as linhas listradas;
+- A lateral da página deverá ter o logo do sistema;
+- A lateral da página também deve conter o menu do sistema, onde os botões (com efeito de hover) redirecionam o usuário para as páginas de listagem de receita, despesa e relatório.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+
+
+4 – Tela de Despesas (Listagem e Exclusão).
+
+A Tela de Despesas deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” em todos os botões;
+- Deve apresentar um degradê na cor de fundo;
+- O botão “Buscar” deve buscar no banco de dados todas as despesas do usuário logado;
+- O botão “Limpar” deve limpar na tela os registros da tabela;
+- O botão “Cadastrar” deve redirecionar o usuário para a tela de cadastro de despesa;
+- O botão “Editar” deve redirecionar o usuário para a tela de cadastro de despesa levando as informações da linha da tabela para serem atualizadas. 
+- O botão “Excluir” deve apagar no banco de dados o registro da despesa selecionada e atualizar a tabela sem a despesa.
+- A Exclusão de uma despesa deve informar uma mensagem para o usuário que a despesa foi excluída com sucesso.
+- A tabela deve apresentar as linhas listradas;
+- A lateral da página deverá ter o logo do sistema;
+- A lateral da página também deve conter o menu do sistema, onde os botões (com efeito de hover) redirecionam o usuário para as páginas de listagem de receita, despesa e relatório.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+
+5 – Tela de Cadastro/Edição de Receitas.
+
+A Tela de Cadastro/Edição de Receitas deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” em todos os botões;
+- Deve apresentar um degradê na cor de fundo;
+- O label do botão na inserção de uma receita nova deve ser “Cadastrar”;
+- O label do botão na edição de uma receita deve ser “Atualizar”;
+- O campo Descrição deve ter pelo menos 3 caracteres e ser obrigatório o preenchimento;
+- O campo Data da Receita deve apresentar um calendário para o usuário selecionar a data e ser obrigatório o preenchimento; 
+- O campo Valor deve ser numérico e seu preenchimento obrigatório;
+- Tanto o cadastro de uma nova receita quanto a edição de uma existente devem realizar a persistência da informação no banco de dados;
+- Uma vez cadastrada ou atualizada uma receita o sistema deve redirecionar o usuário para a página de Receitas;
+- A lateral da página deverá ter o logo do sistema;
+- A lateral da página também deve conter o menu do sistema, onde os botões (com efeito de hover) redirecionam o usuário para as páginas de listagem de receita, despesa e relatório.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+
+6 – Tela de Cadastro/Edição de Despesas.
+
+A Tela de Cadastro/Edição de Despesas deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” em todos os botões;
+- Deve apresentar um degradê na cor de fundo;
+- O label do botão na inserção de uma despesa nova deve ser “Cadastrar”;
+- O label do botão na edição de uma despesa deve ser “Atualizar”;
+- O campo Descrição deve ter pelo menos 3 caracteres e ser obrigatório o preenchimento;
+- O campo Valor deve ser numérico e obrigatório o preenchimento;
+- O campo Data da Vencimento deve apresentar um calendário para o usuário selecionar a data e ser obrigatório o preenchimento; 
+- O campo Data de Pagamento deve apresentar um calendário para o usuário selecionar a data, porém o seu preenchimento não é obrigatório; 
+- Tanto o cadastro de uma nova despesa quanto a edição de uma existente devem realizar a persistência das informações no banco de dados;
+- Uma vez cadastrada ou atualizada uma despesa o sistema deve redirecionar o usuário para a página de Despesas;
+- A lateral da página deverá ter o logo do sistema;
+- A lateral da página também deve conter o menu do sistema, onde os botões (com efeito de hover) redirecionam o usuário para as páginas de listagem de receita, despesa e relatório.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+
+7 – Tela de Relatório de Receitas vs. Despesas.
+
+A Tela de Relatórios deve:
+- Utilizar as fontes indicadas no projeto;
+- Apresentar o efeito de “hover” em todos os botões;
+- Deve apresentar um degradê na cor de fundo;
+- O campo Ano deve ser numérico e obrigatório o preenchimento;
+- Ao clicar no botão “Gerar” o sistema deve pegar o ano selecionado no campo Ano e ir ao banco de dados para gerar as informações necessárias para a geração do gráfico.
+- A lateral da página deverá ter o logo do sistema;
+- A lateral da página também deve conter o menu do sistema, onde os botões (com efeito de hover) redirecionam o usuário para as páginas de listagem de receita, despesa e relatório.
+- Aplicar as cores de fundo e de fontes indicadas no print das telas.
+- Para o desenvolvimento do gráfico deve-se usar a API Chart JS. O endereço do site com os exemplos de configuração está disponível no endereço: https://www.chartjs.org/.
+
+BACKEND:
+
+Capacidades do Sistema
+
+
+1 – Usuário
+
+- Cadastrar Usuário: Esta capacidade tem como regra específica de negócio a verificação se o usuário já se encontra cadastrado no banco de dados. Caso não esteja cadastrado o sistema pode continuar com o processo de cadastro, caso contrário, deverá informar que o usuário já se encontra cadastrado no sistema.
+
+- Logar no Sistema: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a consulta para verificar se o login e senha digitados pelo usuário coincidem com as cadastradas no banco de dados.
+
+
+2 – Receita
+
+- Cadastrar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar o cadastro da receita para o usuário logado no banco de dados.
+
+- Listar todas as Receitas: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a listagem de todas as receitas do usuário logado no banco de dados.
+
+- Pesquisar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a pesquisa da receita específica selecionada pelo usuário logado no banco de dados.
+
+- Atualizar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a atualização da receita do usuário logado no banco de dados.
+
+- Excluir Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a exclusão da receita do usuário logado no banco de dados.
+
+
+3 – Despesa
+
+- Cadastrar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar o cadastro da despesa para o usuário logado no banco de dados.
+
+- Listar todas as Despesas: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a listagem de todas as despesas do usuário logado no banco de dados.
+
+- Pesquisar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a pesquisa da despesa específica selecionada pelo usuário logado no banco de dados.
+
+- Atualizar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a atualização da despesa do usuário logado no banco de dados.
+
+- Excluir Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a exclusão da despesa do usuário logado no banco de dados.
+
+
+4 – Relatório
+
+- Gerar Relatório: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a consulta que processa as informações de receitas e despesas por mês, sendo que essa consulta no banco de dados deve ser realizada baseado no ano definido pelo usuário logado do sistema.
