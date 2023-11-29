@@ -27,10 +27,10 @@ public class DespesaRest {
 	}
 
 	@GET
-	@Path("/listar/{idUsuario}")
+	@Path("/listar/{idusuario}")
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<DespesaVO> consultarDespesasController(@PathParam("idUsuario") int idUsuario) {
+	public List<DespesaVO> consultarDespesasController(@PathParam("idusuario") int idUsuario) {
 		DespesaBO despesaBO = new DespesaBO();
 		return despesaBO.consultarTodasDespesasBO(idUsuario);
 	}

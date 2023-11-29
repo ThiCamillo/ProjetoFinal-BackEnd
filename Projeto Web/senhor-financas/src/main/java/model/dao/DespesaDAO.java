@@ -38,7 +38,7 @@ public class DespesaDAO {
 
 	// INSERT - CADASTRAR
 	public DespesaVO cadastrarDespesaDAO(DespesaVO despesaVO) {
-		String query = "INSERT INTO despesa (idusuario, descrição, valor, datavencimento, datapagamento) VALUES (?, ?, ?, ?, ?)";
+		String query = "INSERT INTO despesa (idusuario, descricao, valor, datavencimento, datapagamento) VALUES (?, ?, ?, ?, ?)";
 		Connection conn = Banco.getConnection();
 		PreparedStatement pstmt = Banco.getPreparedStatementWithPk(conn, query);
 		try {
