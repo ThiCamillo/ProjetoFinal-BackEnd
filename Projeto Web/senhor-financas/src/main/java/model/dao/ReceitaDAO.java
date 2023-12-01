@@ -66,10 +66,10 @@ public class ReceitaDAO {
 		Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
 		String query = "UPDATE receita SET idusuario = " + receitaVO.getIdUsuario()
-		+ ", descricao = " + receitaVO.getDescricao()
-		+ ", valor = " + receitaVO.getValor()
-		+ ", datareceita = " + receitaVO.getDataReceita()
-		+ " WHERE idreceita = " + receitaVO.getIdReceita();
+		+ ", descricao = '" + receitaVO.getDescricao()
+		+ "', valor = " + receitaVO.getValor()
+		+ ", datareceita = '" + receitaVO.getDataReceita()
+		+ "' WHERE idreceita = " + receitaVO.getIdReceita();
 		try {
 			if (stmt.executeUpdate(query) == 1) {
 				retorno = true;
