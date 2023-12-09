@@ -52,14 +52,14 @@ public class ReceitaVO {
 	public void setDataReceita(LocalDate dataReceita) {
 		this.dataReceita = dataReceita;
 	}
-	@Override
-	public String toString() {
-		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return "Código da Receita: " + this.getIdReceita()
-				+ "\nCódigo do Usuário: " + this.getIdUsuario()
-				+ "\nDescrição: " + this.getDescricao()
-				+ "\nValor: " + this.getValor()
-				+ "\nData: " + this.getDataReceita().format(formataData);
-	}
+//	@Override
+//	public String toString() {
+//		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//		return "Código da Receita: " + this.getIdReceita()
+//				+ "\nCódigo do Usuário: " + this.getIdUsuario()
+//				+ "\nDescrição: " + this.getDescricao()
+//				+ "\nValor: " + this.getValor()
+//				+ "\nData: " + this.getDataReceita().format(formataData);
+//	}
 	
 }

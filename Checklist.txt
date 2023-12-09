@@ -115,35 +115,35 @@ Capacidades do Sistema
 
 1 – Usuário
 
-- Cadastrar Usuário: Esta capacidade tem como regra específica de negócio a verificação se o usuário já se encontra cadastrado no banco de dados. Caso não esteja cadastrado o sistema pode continuar com o processo de cadastro, caso contrário, deverá informar que o usuário já se encontra cadastrado no sistema.
+ok- Cadastrar Usuário: Esta capacidade tem como regra específica de negócio a verificação se o usuário já se encontra cadastrado no banco de dados. Caso não esteja cadastrado o sistema pode continuar com o processo de cadastro, caso contrário, deverá informar que o usuário já se encontra cadastrado no sistema.
 
-- Logar no Sistema: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a consulta para verificar se o login e senha digitados pelo usuário coincidem com as cadastradas no banco de dados.
+ok- Logar no Sistema: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a consulta para verificar se o login e senha digitados pelo usuário coincidem com as cadastradas no banco de dados.
 
 
 2 – Receita
 
-- Cadastrar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar o cadastro da receita para o usuário logado no banco de dados.
+ok- Cadastrar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar o cadastro da receita para o usuário logado no banco de dados.
 
-- Listar todas as Receitas: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a listagem de todas as receitas do usuário logado no banco de dados.
+ok- Listar todas as Receitas: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a listagem de todas as receitas do usuário logado no banco de dados.
 
-- Pesquisar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a pesquisa da receita específica selecionada pelo usuário logado no banco de dados.
+ok- Pesquisar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a pesquisa da receita específica selecionada pelo usuário logado no banco de dados.
 
-- Atualizar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a atualização da receita do usuário logado no banco de dados.
+ok- Atualizar Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a atualização da receita do usuário logado no banco de dados.
 
-- Excluir Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a exclusão da receita do usuário logado no banco de dados.
+ok- Excluir Receita: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a exclusão da receita do usuário logado no banco de dados.
 
 
 3 – Despesa
 
-- Cadastrar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar o cadastro da despesa para o usuário logado no banco de dados.
+ok- Cadastrar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar o cadastro da despesa para o usuário logado no banco de dados.
 
-- Listar todas as Despesas: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a listagem de todas as despesas do usuário logado no banco de dados.
+ok - Listar todas as Despesas: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a listagem de todas as despesas do usuário logado no banco de dados.
 
-- Pesquisar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a pesquisa da despesa específica selecionada pelo usuário logado no banco de dados.
+ok- Pesquisar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a pesquisa da despesa específica selecionada pelo usuário logado no banco de dados.
 
-- Atualizar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a atualização da despesa do usuário logado no banco de dados.
+ok- Atualizar Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a atualização da despesa do usuário logado no banco de dados.
 
-- Excluir Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a exclusão da despesa do usuário logado no banco de dados.
+ok- Excluir Despesa: Esta capacidade não possui nenhuma regra específica de negócio, bastando apenas realizar a exclusão da despesa do usuário logado no banco de dados.
 
 
 4 – Relatório

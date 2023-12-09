@@ -36,7 +36,7 @@ datapagamento date
 
 
 insert into usuario (nome, cpf, email, datanascimento, login, senha) 
-values ('Thiago', '01234567890', 'thiago@uorak.com', '1985-05-03', 'thiago', 'camillo');
+values ('Jacque', '01234567890', 'jacque@gmail.com', '1990-01-01', 'jacque', 'jacque');
 
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salário', 8000.00, '2023-01-01');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'aulas', 4000.00, '2023-01-21');
@@ -62,7 +62,6 @@ insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salá
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'consultoria', 4000.00, '2023-11-10');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salário', 9000.00, '2023-12-01');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'aulas', 5000.00, '2023-12-21');
-
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'salário', 9000.00, '2022-06-01');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'consultoria', 6000.00, '2022-06-10');
 insert into receita (idusuario, descricao, valor, datareceita) values (1, 'aulas', 5000.00, '2022-06-21');
@@ -91,14 +90,13 @@ insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento)
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Aluguel', 2500.00, '2023-12-10', '2023-12-10');
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Escola', 1500.00, '2023-12-12', null);
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Comida', 5000.00, '2023-12-12', null);
-
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Aluguel', 2500.00, '2022-12-10', '2022-12-10');
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Escola', 1500.00, '2022-12-12', null);
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (1, 'Comida', 5000.00, '2022-12-12', null);
 
 
 
-insert into usuario (nome, cpf, email, datanascimento, login, senha) values ('Camillo', '09876543210', 'camillo@uorak.com', '2000-07-17', 'camillo', 'thiago');
+insert into usuario (nome, cpf, email, datanascimento, login, senha) values ('Thiago', '09876543210', 'thiago@gmail.com', '2000-07-17', 'thiago', 'thiago');
 
 insert into receita (idusuario, descricao, valor, datareceita) values (2, 'salário', 9000.00, '2023-05-01');
 insert into receita (idusuario, descricao, valor, datareceita) values (2, 'consultoria', 6000.00, '2023-06-10');
@@ -113,5 +111,3 @@ insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento)
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (2, 'Aluguel', 2500.00, '2023-08-10', '2023-05-10');
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (2, 'Escola', 1500.00, '2023-09-12', null);
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (2, 'Comida', 5000.00, '2023-10-12', null);
-
-

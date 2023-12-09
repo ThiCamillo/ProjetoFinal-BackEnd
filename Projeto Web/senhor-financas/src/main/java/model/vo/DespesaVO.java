@@ -61,15 +61,15 @@ public class DespesaVO {
 	public void setDataPagamento(LocalDate dataPagamento) {
 		this.dataPagamento = dataPagamento;
 	}
-	@Override
-	public String toString() {
-		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-		return "Código da Despesa: " + this.getIdDespesa()
-		+ "\nCódigo do Usuário: " + this.getIdUsuario()
-		+ "\nDescrição: " + this.getDescricao()
-		+ "\nValor: " + this.getValor()
-		+ "\nData de Vencimento: " + this.getDataVencimento().format(formataData)
-		+ "\nData de Pagamento: " + this.getDataPagamento().format(formataData);
-	}
+//	@Override
+//	public String toString() {
+//		DateTimeFormatter formataData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+//		return "Código da Despesa: " + this.getIdDespesa()
+//		+ "\nCódigo do Usuário: " + this.getIdUsuario()
+//		+ "\nDescrição: " + this.getDescricao()
+//		+ "\nValor: " + this.getValor()
+//		+ "\nData de Vencimento: " + this.getDataVencimento().format(formataData)
+//		+ "\nData de Pagamento: " + this.getDataPagamento().format(formataData);
+//	}
 	
 }
