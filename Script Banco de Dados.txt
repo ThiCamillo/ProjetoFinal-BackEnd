@@ -175,5 +175,23 @@ ORDER BY mes_receita;
 	GROUP BY MONTH(`data_vencimento`) ORDER BY MONTH (`data_vencimento`);
 	
 ----------------------------------------------------------------------------------------------
+	como exemplo, outra possibilidade:
 	
+	select u.nome as NOME, 
+	v.datacancelamento as DATA_CANCELAMENTO, 
+	(select sum(p.preco * itv.quantidade) 
+		from itemvenda itv, produto p
+		where itv.idvenda = v.idvenda
+		and itv.idproduto = p.idproduto
+		group by idvenda) as SUBTOTAL, 
+    v.taxaentrega as TAXA_ENTREGA, 
+    (v.taxaentrega + (select sum(p.preco * itv.quantidade) 
+						from itemvenda itv, produto p
+						where itv.idvenda = v.idvenda
+						and itv.idproduto = p.idproduto
+						group by idvenda)) as TOTAL
+from usuario u, venda v
+where v.idusuario = u.idusuario
+and v.datacancelamento is not null;
+
 	

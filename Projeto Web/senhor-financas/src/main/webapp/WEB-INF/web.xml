@@ -1,11 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<web-app 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
 	xmlns="https://jakarta.ee/xml/ns/jakartaee" 
 	xmlns:web="http://xmlns.jcp.org/xml/ns/javaee" 
 	xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee 
 						https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd" 
 	id="WebApp_ID" version="5.0">
 	
+	<!-- Configuração do filtro CORS -->
+	<filter>
+	<filter-name>CorsFilter</filter-name>
+        <filter-class>org.apache.catalina.filters.CorsFilter</filter-class>
+        <init-param>
+            <param-name>cors.allowed.origins</param-name>
+            <param-value>http://127.0.0.1:5500</param-value> <!-- ou especifique a origem permitida -->
+        </init-param>
+        <init-param>
+            <param-name>cors.allowed.methods</param-name>
+            <param-value>GET,POST,PUT,DELETE,OPTIONS,HEAD</param-value>
+        </init-param>
+        <init-param>
+            <param-name>cors.allowed.headers</param-name>
+            <param-value>Content-Type,X-Requested-With,accept,Origin,Access-Control-Request-Method,Access-Control-Request-Headers,Authorization</param-value>
+        </init-param>
+	</filter>
+	<filter-mapping>
+        <filter-name>CorsFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
 	<servlet>
         <servlet-name>MyApplication</servlet-name>
         <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
