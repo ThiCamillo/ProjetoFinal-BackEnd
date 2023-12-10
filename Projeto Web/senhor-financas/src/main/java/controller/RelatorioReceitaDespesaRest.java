@@ -12,7 +12,7 @@ import model.bo.ReceitaBO;
 import model.vo.ReceitaVO;
 
 //@Path("/relatorio")
-public class RelatorioRest {
+public class RelatorioReceitaDespesaRest {
 
 //	@GET
 //	@Path("/listar/{datareceita}")
