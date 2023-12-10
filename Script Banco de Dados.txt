@@ -141,14 +141,28 @@ GROUP BY
 ORDER BY 
     mes;
 ------------------------------------------
-
+SELECT distinct
+	 r.idusuario,
+    MONTH(r.datareceita) AS mes_receita,
+    MONTH(d.datavencimento) AS mes_despesa,
+    SUM(r.valor) AS total_receitas,
+    SUM(d.valor) AS total_despesas
+FROM receita AS r
+INNER JOIN despesa AS d ON r.idusuario = d.idusuario
+WHERE 
+    (YEAR(r.datareceita) = '2023') AND (year(d.datavencimento) = '2023')
+    AND r.idusuario = 1
+GROUP BY 
+mes_receita
+--    MONTH(r.datareceita, d.datavencimento)
+ORDER BY mes_receita;
 
 
 
 
 
 	
-	--------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------
 	OUTRA POSSIBILIDADE DE CONSULTA
 	SELECT MONTHNAME(`data_vencimento`) as mes,
 	(SELECT SUM(`valor`) as valor_total 
@@ -160,6 +174,6 @@ ORDER BY
 	From lancamentos 
 	GROUP BY MONTH(`data_vencimento`) ORDER BY MONTH (`data_vencimento`);
 	
-	----------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------
 	
 	
