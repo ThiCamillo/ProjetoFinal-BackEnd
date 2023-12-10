@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 import model.vo.ReceitaVO;
 
-public class RelatorioDAO {
+public class RelatorioReceitaDespesaDAO {
 
 //	// READ ALL -- LISTAR TODAS RECEITAS E DESPESAS POR ANO
 //		public ArrayList<ReceitaVO> consultarTodasReceitasDAO(int idUsuario) {

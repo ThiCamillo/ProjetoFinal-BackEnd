@@ -111,3 +111,55 @@ insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento)
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (2, 'Aluguel', 2500.00, '2023-08-10', '2023-05-10');
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (2, 'Escola', 1500.00, '2023-09-12', null);
 insert into despesa (idusuario, descricao, valor, datavencimento, datapagamento) values (2, 'Comida', 5000.00, '2023-10-12', null);
+
+
+---------------------------------------------------------------------------------------------
+PRIMEIRO TESTE DE CONSULTA RELATORIO
+SELECT 
+    MONTH(data) AS mes,
+    SUM(valor) AS total_receitas,
+    0 AS total_despesas
+FROM 
+    receitas
+WHERE 
+    YEAR(data) = :ano_param
+GROUP BY 
+    MONTH(data)
+
+UNION ALL
+
+SELECT 
+    MONTH(data) AS mes,
+    0 AS total_receitas,
+    SUM(valor) AS total_despesas
+FROM 
+    despesas
+WHERE 
+    YEAR(data) = :ano_param
+GROUP BY 
+    MONTH(data)
+ORDER BY 
+    mes;
+------------------------------------------
+
+
+
+
+
+
+	
+	--------------------------------------------------------------------------------------------
+	OUTRA POSSIBILIDADE DE CONSULTA
+	SELECT MONTHNAME(`data_vencimento`) as mes,
+	(SELECT SUM(`valor`) as valor_total 
+	FROM lancamentos 
+	WHERE tipo = 'despesa' and YEAR(`data_vencimento`) = 2022 AND `empresa` = 1) as despesas,
+	(SELECT SUM(`valor`) as valor_total 
+	FROM lancamentos 
+	WHERE tipo = 'receita' and YEAR(`data_vencimento`) = 2022 AND `empresa` = 1) as receitas 
+	From lancamentos 
+	GROUP BY MONTH(`data_vencimento`) ORDER BY MONTH (`data_vencimento`);
+	
+	----------------------------------------------------------------------------------------------
+	
+	
