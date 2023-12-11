@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.Types;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -75,13 +76,17 @@ public class DespesaDAO {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
 				DespesaVO despesa = new DespesaVO();
-				despesa.setIdDespesa(Integer.parseInt(resultado.getString(1)));
-				despesa.setIdUsuario(Integer.parseInt(resultado.getString(2)));
+				despesa.setIdDespesa(resultado.getInt(1));
+				despesa.setIdUsuario(resultado.getInt(2));
 				despesa.setDescricao(resultado.getString(3));
-				despesa.setValor(Double.parseDouble(resultado.getString(4)));
-				despesa.setDataVencimento(LocalDate.parse(resultado.getString(5)));
-				despesa.setDataPagamento(LocalDate.parse(resultado.getString(6)));
-				listaDespesas.add(despesa);
+				despesa.setValor(resultado.getDouble(4));
+				if(resultado.getObject(5) != null) {
+					despesa.setDataVencimento(LocalDate.parse(resultado.getString(5)));
+				}
+				if(resultado.getObject(6) != null) {
+					despesa.setDataPagamento(LocalDate.parse(resultado.getString(6)));
+				}
+					listaDespesas.add(despesa);
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarTodasDespesasDAO!");
@@ -106,12 +111,16 @@ public class DespesaDAO {
 		try {
 			resultado = stmt.executeQuery(query);
 			while (resultado.next()) {
-				despesa.setIdDespesa(Integer.parseInt(resultado.getString(1)));
-				despesa.setIdUsuario(Integer.parseInt(resultado.getString(2)));
+				despesa.setIdDespesa(resultado.getInt(1));
+				despesa.setIdUsuario(resultado.getInt(2));
 				despesa.setDescricao(resultado.getString(3));
-				despesa.setValor(Double.parseDouble(resultado.getString(4)));
-				despesa.setDataVencimento(LocalDate.parse(resultado.getString(5)));
-				despesa.setDataPagamento(LocalDate.parse(resultado.getString(6)));
+				despesa.setValor(resultado.getDouble(4));
+				if(resultado.getObject(5) != null) {
+					despesa.setDataVencimento(LocalDate.parse(resultado.getString(5)));
+				}
+				if(resultado.getObject(6) != null) {
+					despesa.setDataPagamento(LocalDate.parse(resultado.getString(6)));
+				}
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo consultarDespesaDAO!");
@@ -127,25 +136,35 @@ public class DespesaDAO {
 	// UPDATE --ATUALIZAR
 	public boolean atualizarDespesaDAO(DespesaVO despesaVO) {
 		Connection conn = Banco.getConnection();
-		Statement stmt = Banco.getStatement(conn);
+		//Statement stmt = Banco.getStatement(conn);
 		boolean retorno = false;
-		String query = "UPDATE despesa SET idusuario = '" + despesaVO.getIdUsuario()
-			+ "', descricao = '" + despesaVO.getDescricao()
-			+ "', valor = '" + despesaVO.getValor()
-			+ "', datavencimento = '" + despesaVO.getDataVencimento()
-			+ "', datapagamento = '" + despesaVO.getDataPagamento()
-			+ "' WHERE iddespesa = " + despesaVO.getIdDespesa();
+//		String query = "UPDATE despesa SET descricao = '" + despesaVO.getDescricao()
+//			+ "', valor = '" + despesaVO.getValor()
+//			+ "', datavencimento = '" + despesaVO.getDataVencimento()
+//			+ "', datapagamento = '" + despesaVO.getDataPagamento()
+//			+ "' WHERE iddespesa = " + despesaVO.getIdDespesa();
+////		idusuario = '" + despesaVO.getIdUsuario()
 
-		//String query = "UPDATE despesa SET descricao=?, valor=?, datavencimento=?, datapagamento=?, idusuario=? WHERE iddespesa=?";		 
+		String query = "UPDATE despesa SET descricao=?, valor=?, datavencimento=?, datapagamento=? WHERE iddespesa=?";		 
+		PreparedStatement pstmt = Banco.getPreparedStatement(conn, query);
 		try {
-			if (stmt.executeUpdate(query) == 1) {
+			pstmt.setString(1, despesaVO.getDescricao());
+			pstmt.setDouble(2, despesaVO.getValor());
+			pstmt.setObject(3, despesaVO.getDataVencimento());
+			if (despesaVO.getDataPagamento() != null) {
+				pstmt.setObject(4, despesaVO.getDataPagamento());
+			} else {
+				pstmt.setNull(4, Types.DATE);
+			}
+			pstmt.setInt(5, despesaVO.getIdDespesa());
+			if (pstmt.executeUpdate() == 1) {
 				retorno = true;
 			}
 		} catch (SQLException erro) {
 			System.out.println("\nErro ao executar a query do metodo atualizarDespesaDAO!");
 			System.out.println("Erro: " + erro.getMessage());
 		} finally {
-			Banco.closeStatement(stmt);
+			Banco.closeStatement(pstmt);
 			Banco.closeConnection(conn);
 		}
 		return retorno;
